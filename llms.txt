@@ -1,0 +1,29 @@
+# Codex 實戰學院
+
+> 繁體中文、開放閱讀的 Codex 互動式實戰課程。主課程 20 小時，另有生活 AI Agent 與 Codex in Practice 兩個加值章，共 4 小時。本文教材以 OpenAI 官方文件為基礎，提供情境、練習與可複製範本。
+
+## 課程首頁
+- https://codex-tutorial.sdwh.dev/index.html
+
+## 主課程：Codex 開發工作流
+- [01 工作循環與任務設計](https://codex-tutorial.sdwh.dev/01-tasking.html)
+- [02 讀懂專案與提供脈絡](https://codex-tutorial.sdwh.dev/02-commands.html)
+- [03 Debug 與可靠修復](https://codex-tutorial.sdwh.dev/03-project-context.html)
+- [04 Plan 與跨檔功能開發](https://codex-tutorial.sdwh.dev/04-usage-safety.html)
+- [05 測試、Diff 與 Code Review](https://codex-tutorial.sdwh.dev/05-practical-workflows.html)
+- [06 Git、Worktree 與平行任務](https://codex-tutorial.sdwh.dev/06-git-worktrees.html)
+- [07 前端、UI 與視覺迭代](https://codex-tutorial.sdwh.dev/07-frontend-ui.html)
+- [08 Cloud、遠端與長時間任務](https://codex-tutorial.sdwh.dev/08-cloud-long-tasks.html)
+- [09 AGENTS.md、RAG、Skills、MCP 與專案脈絡](https://codex-tutorial.sdwh.dev/09-project-customization.html)
+- [10 Quota、權限與整合 Capstone](https://codex-tutorial.sdwh.dev/10-usage-safety-capstone.html)
+
+## 加值章：Codex 與生活 AI Agent
+- [11 Codex 不只寫程式：生活應用案例](https://codex-tutorial.sdwh.dev/11-beyond-coding.html)
+
+- [12 Codex in Practice：從需求到互動課程網站](https://codex-tutorial.sdwh.dev/12-codex-in-practice.html)
+
+## 主要主題
+Codex prompting、repo exploration、debugging、plan mode、verification、code review、git worktrees、frontend design、cloud tasks、AGENTS.md、RAG、reference routing、global and project instructions、skills、MCP、quota、permissions、non-coding AI agent workflows.
+
+## Crawling
+All public HTML lessons are intended for indexing. See /robots.txt and /sitemap.xml.

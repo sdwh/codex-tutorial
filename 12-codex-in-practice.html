@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10110f">
+<title>12 Codex in Practice：把一串需求做成互動課程網站｜Codex 實戰學院</title>
+<link rel="stylesheet" href="course.css">
+<meta name="description" content="Codex in Practice 實戰案例：回顧如何把一連串使用者需求逐步釐清、規劃、研究、實作和整理成完整的繁體中文互動課程網站。">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="canonical" href="https://codex-tutorial.sdwh.dev/12-codex-in-practice.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://codex-tutorial.sdwh.dev/12-codex-in-practice.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Codex 實戰學院">
+<meta property="og:title" content="12 Codex in Practice：把一串需求做成互動課程網站">
+<meta property="og:description" content="從第一個 task prompt 到課程內容、互動教材、SEO 和發布準備，拆解一個真實 Codex 協作案例。">
+<meta property="og:url" content="https://codex-tutorial.sdwh.dev/12-codex-in-practice.html">
+<meta property="og:image" content="https://codex-tutorial.sdwh.dev/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Codex 實戰學院繁體中文互動課程分享圖">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Codex in Practice：把一串需求做成互動課程網站">
+<meta name="twitter:description" content="從第一個 task prompt 到課程內容、互動教材、SEO 和發布準備，拆解一個真實 Codex 協作案例。">
+<meta name="twitter:image" content="https://codex-tutorial.sdwh.dev/social-preview.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Codex in Practice：把一串需求做成互動課程網站","description":"回顧如何把使用者逐步補充的需求轉成一套繁體中文 Codex 實戰課程網站。","inLanguage":"zh-Hant","learningResourceType":"Interactive case study","isAccessibleForFree":true,"isPartOf":{"@type":"WebSite","name":"Codex 實戰學院","url":"https://codex-tutorial.sdwh.dev/"}}</script>
+</head>
+<body data-lesson="12">
+<header><div class="bar"><a class="brand" href="index.html">CODEX <span>/ 20H + CASE STUDY</span></a><div class="bar-right">最後一章 12 / 12</div></div></header>
+<main>
+<section class="hero"><div class="tag">FINAL CASE STUDY · CODEX IN PRACTICE</div><h1>一串 Task Prompt，<br><span style="color:var(--lime)">最後長成一個學習網站。</span></h1><p>這不是預先寫好的產品規格，而是一段真實的協作過程：使用者先說想學 Codex，接著修正教材方向、補上學習時數與情境，再不斷擴展網站用途。這一章拆解 Codex 如何把需求變成可檢查的內容和網站，也回顧哪些地方應該先釐清、哪些決策來自使用者回饋。</p><div class="unit-meta"><span class="pill">案例：本課程網站</span><span class="pill">流程：需求 → 研究 → 設計 → 交付</span><span class="pill">最後回顧：真實做過與尚未做的事</span></div></section>
+<section class="section"><h2>本章學習路線</h2><div class="timeline"><div><b>10 分</b>讀懂需求演變</div><div><b>20 分</b>拆解 Prompt 與範圍</div><div><b>20 分</b>官方來源與內容架構</div><div><b>30 分</b>互動教材設計</div><div><b>25 分</b>檢查與網站發現性</div><div><b>15 分</b>抽取可重用方法</div></div><div class="timerbox"><span>本章計時</span><strong id="timer-value">00:00:00</strong><button id="timer-start">開始</button><button id="timer-pause">暫停</button><button id="timer-reset">歸零</button></div></section>
+<section class="section"><div class="tag">01 · THE REQUEST EVOLVED</div><h2>先看使用者如何一步步定義真正想要的成果</h2><p>需求不是一次交代完成，而是透過使用者回饋，逐漸從「做個頁面」變成「能自學的課程產品」。每次轉向都改變了交付物。</p><div class="grid"><div class="scenario"><div class="tag">起點 · 互動 Codex 教學頁</div><p>最初希望有一個 HTML，介紹 Codex 使用方式、quota、指令、功能和技巧。這先定義了主題，還沒有定義教學深度、受眾或學習成果。</p></div><div class="scenario"><div class="tag">第一次收斂 · 官方內容的精華教材</div><p>使用者要求整理官方網站和教學，聚焦最重要的 20% 內容，並以繁中解釋技術術語。於是需要把產品功能切成可分開閱讀的教材，而不是堆成單頁速查表。</p></div><div class="scenario"><div class="tag">關鍵修正 · 以閱讀後能做為成功標準</div><p>使用者說明真正的期待是「讀完文件就能應用」，並要求增加內容、情境和 20 小時學習路徑。成功標準從「列出功能」改為「完成練習後能交付」。</p></div><div class="scenario"><div class="tag">擴展 · 更多真實用途與完整網站</div><p>後續補上程式以外的生活 AI Agent、RAG 與個人脈絡、開源圖示、爬蟲友善的 SEO，最後再要求把整個網站製作過程變成 Codex 實戰案例。</p></div></div><div class="callout"><b>協作要點：</b>收到修正時，把它視為規格更新，連帶檢查課程單元、進度總數、導覽、計時和 SEO 索引，避免只加一頁卻讓其他地方仍保留舊設定。</div></section>
+<section class="section"><div class="tag">02 · TASK PROMPT DESIGN</div><h2>如何把模糊想法改寫成可執行工作單？</h2><p>最初的需求有主題，但缺少範圍、依據和完成條件。實際協作中，這些資訊是經由追問與回饋逐步補齊的。若從頭重新交辦，可以先用以下格式：</p><textarea class="copybox" id="case-prompt" readonly>請把這個資料夾裡的 Codex 官方教學整理成一套繁體中文互動式 HTML 學習網站，供剛開始使用 Codex 的開發者自學。
+目標：學完後能獨立處理日常任務，而不是只會背功能名稱。
+內容：涵蓋提示與任務拆解、專案理解、除錯、功能開發、驗證與 review、Git/worktree、UI、Cloud、AGENTS.md/Skills/MCP、quota/權限；補充 RAG 和開發者背景設定，最後加生活 AI Agent 及本網站製作案例。
+方法：以 OpenAI 官方文件為主要依據；遇到會變動的產品資訊先查官方來源。標出外部來源，不要把未查證內容寫成產品事實。
+教學設計：建立 20 小時核心路徑，加入情境、逐步練習、可複製 Prompt、理解題和完成條件；將選修章和案例章分開標示。
+介面：延續共用 CSS / JS；加入搜尋、章節完成記錄、手動計時、互動面板和複製按鈕；繁體中文、術語首次出現附說明、手機可用。
+驗收：每頁有唯一標題與清楚導覽；本機連結有效；進度和計時包含全部章節；爬蟲檔案使用正式網域；最後回報實際修改和核對結果。
+遇到範圍不清楚時先問；有新增需求時同步更新首頁、章節導覽、SEO 和計數。</textarea><button data-copy-target="case-prompt">複製重用版 Task Prompt</button><p class="muted">這是依照本案例回顧重寫的「更完整交辦方式」，不是最初一開始就收到的原文 Prompt。</p></section>
+<section class="section"><div class="tag">03 · PLAN THE LEARNING PRODUCT</div><h2>把「介紹 Codex」轉成學習成果與章節</h2><div class="tabs"><button class="tab active" data-show="plan-outcomes">從能力倒推</button><button class="tab" data-show="plan-curriculum">排出學習順序</button><button class="tab" data-show="plan-delivery">定義章節交付</button></div><div class="panel" data-panel="plan-outcomes"><p>先問讀者學完要能做什麼：把任務說清楚、協助 Codex 理解 repo、找到 bug、實作變更、驗證結果、審查風險、設定可重用脈絡。能力比功能清單更能決定要教什麼。</p><ul class="steps"><li>目標是行為，不只是知道名詞。</li><li>每種能力配一個日常情境和可觀察成果。</li><li>20% / 80% 是取捨方向，不是聲稱精確計算出課程涵蓋率。</li></ul></div><div class="panel hidden" data-panel="plan-curriculum"><p>先以任務生命週期排 10 個 2 小時核心單元：交辦 → 讀專案 → 除錯 → 開發 → 驗證 → 並行 → UI → 遠端工作 → 專案客製化 → 安全與整合 Capstone。再把「生活 Agent」和「網站如何做出來」做成加值章。</p></div><div class="panel hidden" data-panel="plan-delivery"><p>每個 120 分鐘單元由概念、案例、實作、變體挑戰和回顧組成。單頁教材至少要讓學習者知道：要帶入什麼情境、要輸入什麼、預期看到什麼、怎樣算完成。</p></div></section>
+<section class="section"><div class="tag">04 · SOURCE RESEARCH</div><h2>官方文件研究：找依據、翻成操作步驟、保留查證路徑</h2><div class="grid"><div class="box"><strong>先找第一手來源</strong><p>Codex 命令、設定、Quota、Cloud、AGENTS.md 和 Memories 等產品行為，優先連到官方 Learn、Help Center 和 Developers 文件。</p></div><div class="box"><strong>把文件轉成任務能力</strong><p>不只照抄說明，而是整理「什麼時候用、要給 Codex 什麼、使用者如何驗收、什麼要注意」，再配情境練習。</p></div><div class="box"><strong>保留會變動的界線</strong><p>Quota 與功能開放可能因帳號和版本而異，所以教材引導讀者查看自己的 Usage 或官方最新文件，不把固定數字寫成普遍保證。</p></div><div class="box"><strong>清楚說明研究方法</strong><p>本案例透過官方頁面搜尋與閱讀整理內容，並提供官方連結；沒有執行整站爬蟲、鏡像下載或完整抓取所有官方教材。</p></div></div><div class="callout"><b>可重用的資料研究流程：</b>列出待回答問題 → 找官方頁面 → 讀正文及限制條款 → 將資訊分成穩定原理與會變動細節 → 用自己的案例改寫 → 附來源連結 → 再檢查產品說明是否前後一致。</div></section>
+<section class="section"><div class="tag">05 · DESIGN SYSTEM + INTERACTION</div><h2>為什麼採用一組共用的 HTML、CSS 和 JavaScript？</h2><div class="grid three"><div class="box"><strong>首頁做導覽</strong><p>課程卡片能搜尋、顯示完成進度；使用者從首頁看到整個學習地圖。</p></div><div class="box"><strong>共用視覺語言</strong><p><code>course.css</code> 負責暗色主題、排版、時間軸、卡片、互動面板和手機版配置。</p></div><div class="box"><strong>一致的教材互動</strong><p><code>course.js</code> 提供分頁切換、測驗回饋、複製 Prompt、完成記錄和手動計時。</p></div><div class="box"><strong>內容與狀態分開</strong><p>每章是獨立 HTML；共用互動邏輯和樣式減少重複，每頁以 data-lesson 連結自己的進度鍵。</p></div><div class="box"><strong>加入辨識度</strong><p>Lucide 開源 SVG 圖示依章節主題呈現；favicon、分享預覽圖和 meta 資料服務瀏覽器與社群分享。</p></div><div class="box"><strong>瀏覽器保留進度</strong><p>localStorage 保存完成狀態和計時。它是單一瀏覽器內的本機記錄，不是帳號同步或雲端備份。</p></div></div><div class="exercise"><h3>互動設計的判準</h3><p>每個元件都要幫助理解或行動：Tabs 用來切換範例，複製按鈕減少重打，理解題立即回饋，計時器支持分段學習，完成勾選使長課程可續學。不要為了「看起來互動」而加沒有學習價值的動畫或表單。</p></div></section>
+<section class="section"><div class="tag">06 · ITERATE WITH USER STEERING</div><h2>使用者每次修正，如何帶動下一輪設計？</h2><div class="tabs"><button class="tab active" data-show="steer-content">內容修正</button><button class="tab" data-show="steer-experience">體驗修正</button><button class="tab" data-show="steer-discovery">網站探索性</button></div><div class="panel" data-panel="steer-content"><p>「教材太少，要能學 20 小時」→ 擴充為 10 × 120 分鐘，加入情境、實作和完成標準。不要只加長文字，要增加練習密度和成果。</p><p>「最後加生活 Agent 章」→ 增加旅行、檔案整理、學習教練案例，並將主課程時間和加值時間分開。</p><p>「補 RAG、意圖、全域同步」→ 擴充第 09 章，區分 AGENTS.md、Memories、Skills、MCP、參考檔檢索和跨專案同步。</p></div><div class="panel hidden" data-panel="steer-experience"><p>「要有開源 icon」→ 新增 Lucide inline SVG 並在首頁標示授權；不只裝飾，也用來提示章節主題與按鈕功能。</p><p>「做最後一章回顧過程」→ 新增可操作的案例拆解，而不是只在首頁增加一段說明。</p></div><div class="panel hidden" data-panel="steer-discovery"><p>「加 favicon、robots 和 SEO」→ 使用者提供正式網域後才產生 canonical 與絕對網址 sitemap，避免把錯誤網址散佈到搜尋索引；robots 開放公開內容，並加入分享 metadata、結構化資料和 llms.txt。</p></div></section>
+<section class="section"><div class="tag">07 · QUALITY REVIEW</div><h2>交付前怎麼檢查？哪些事情不能宣稱做過？</h2><div class="checklist"><label><input type="checkbox"> 所有首頁課程卡和上一章／下一章連結都指向存在的 HTML。</label><label><input type="checkbox"> 所有 lesson key 與全站單元數、首頁進度和累計計時範圍一致。</label><label><input type="checkbox"> 每頁 title、description、canonical 和 sitemap 使用同一個正式網址。</label><label><input type="checkbox"> robots.txt 對公開教材採 Allow；sitemap 只列可索引的正式 HTML 頁面。</label><label><input type="checkbox"> 互動面板、複製目標和 JSON-LD 的識別值各自唯一且有對應元件。</label><label><input type="checkbox"> 教材寫出研究來源與驗收證據，不把推測說成官方事實。</label></div><div class="callout"><b>本案例實際完成：</b>檢查過本機導覽存在性、課程計時／進度章節數、SEO 檔案與 sitemap URL 對應，以及 JSON／XML 結構可解析。這次沒有執行自動化測試、真實搜尋引擎索引檢查或 Search Console 提交，也沒有執行完整瀏覽器使用者測試。</div></section>
+<section class="section"><div class="tag">08 · TAKEAWAYS</div><h2>把這套做法帶進你的下一個 Codex 專案</h2><div class="grid"><div class="box"><strong>先問清楚成果</strong><p>當使用者只說「做一個網站」，釐清受眾、使用情境、內容深度、交付格式和成功條件。</p></div><div class="box"><strong>先讓成果可檢視</strong><p>先建立資訊架構、單元清單、共用互動範本，再分批完成可 review 的頁面。</p></div><div class="box"><strong>用真實回饋調整規格</strong><p>每次 steering 後更新相關頁面、索引、導覽和計數，不只改眼前的一句文字。</p></div><div class="box"><strong>留下證據和未知</strong><p>清楚報告做了什麼、檢查了什麼、依據什麼，以及哪些部分還沒驗證。</p></div></div><textarea class="copybox" id="case-recap" readonly># Codex 任務回顧
+使用者最初想解決什麼：
+需求如何逐步釐清：
+採用哪些官方資料與依據：
+內容／程式如何分階段交付：
+重要的使用者 steering：
+互動與視覺設計決策：
+實際檢查過的內容：
+尚未做過或仍待驗證：
+下次可以重用的規則：</textarea><button data-copy-target="case-recap">複製案例回顧格式</button><label class="donebox"><input id="lesson-done" type="checkbox"> 完成 Codex in Practice 案例章</label><div class="source-links"><a href="https://learn.chatgpt.com/docs/customization/overview" target="_blank" rel="noreferrer">官方 Codex Customization ↗</a><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" target="_blank" rel="noreferrer">Google Sitemap 指引 ↗</a></div></section>
+<div class="footer-nav"><a href="11-beyond-coding.html">← 生活 Agent 加值章</a><a href="index.html">課程首頁 ↑</a></div>
+</main><script src="icons.js"></script><script src="course.js"></script></body></html>
