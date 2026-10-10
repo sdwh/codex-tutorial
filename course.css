@@ -60,3 +60,5 @@ img { max-width: 100%; height: auto; }
 .surface-note{margin:24px 0;padding:24px;border:1px solid var(--line);border-left:4px solid var(--lime);border-radius:12px;background:var(--panel)}
 .surface-note h2{font-size:1.25rem;margin:10px 0 18px}.surface-note dl{display:grid;grid-template-columns:6em minmax(0,1fr);gap:10px 16px;margin:0 0 18px}.surface-note dt{font-weight:700}.surface-note dd{margin:0;line-height:1.75;overflow-wrap:anywhere}.surface-label{margin-top:8px;white-space:normal}.surface-context{margin-top:24px}
 @media(max-width:480px){.surface-note{padding:18px}.surface-note dl{grid-template-columns:1fr;gap:4px}.surface-note dd{margin-bottom:12px}}
+
+body[data-guide="surfaces"] table{min-width:720px}body[data-guide="surfaces"] th:first-child{width:150px}.table-hint{font-size:13px}

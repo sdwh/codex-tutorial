@@ -33,3 +33,14 @@ JSON 結構：
 - 設計真正的 lab（重現／操作／檢查）、反例、排錯與完成標準。低風險離線練習優先。
 - 保留既有共用樣式：grid、box、callout、steps、table-wrap、copybox、tabs/panel。不要內嵌 JS。
 - 請在交付時回報讀過的來源、版本限制、可離線驗證範例，以及未實際執行的外部呼叫。
+
+## 操作入口契約
+
+每課在 content/curriculum.json 必須提供 surface：entry、environment、operation、transfer。建置器產生首頁入口標籤與 lesson-surface 操作定位卡；不得在產出 HTML 手改此卡。
+
+- 共通交辦方法與特定入口操作分開描述。
+- 明確標示自然語言、CLI 互動 slash、shell 命令、App 控制或檔案配置。
+- 網頁 Work 不讀本機 Codex config；Skill／Hook／MCP 應說明由哪個 host 載入。
+- 外部工具與 API 標示執行環境、依賴與登入／計費方式。
+- App 和 CLI 同名指令須各自核對官方文件，尤其 /usage 與 /fork。
+- 維護入口比較 surfaces.html；不另計入 50 小時。

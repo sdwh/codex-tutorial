@@ -4,6 +4,7 @@
 
 - 首頁提供核心工作循環、首次任務範本、學習方向與續學入口。
 - 25 個實作單元保留原有完成進度與計時的 localStorage 鍵值。
+- 課前入口比較：surfaces.html；25 課各有入口與執行環境定位卡。
 - 進階指南：customization.html、plus-playbook.html、multi-agent.html。
 - 全站支援系統／淺色／深色主題、章節目錄、鍵盤頁籤與搜尋。
 
@@ -64,3 +65,5 @@ python3 scripts/verify_site.py
 ## 50 小時深度擴充（2026-10-10）
 
 目前完整課程為25單元×120分鐘，五階段共50小時。21–25加入codex exec批次、設定診斷、長任務恢復、Skill工程與工作流評估，20保留為第四階段實作，25為畢業實作。規劃見PLAN-50H.md，參考來源與改寫策略見content/HANDBOOK-INTEGRATION.md。建置與驗證指令沿用上節；新增教材仍編輯JSON原稿。
+
+2026-10-10 入口梳理：見 [content/SURFACE-AUDIT.md](content/SURFACE-AUDIT.md)。以 OpenAI Docs 區分網頁 Chat／Work、桌面 Codex App、本機 CLI 與 Cloud；保持 25 課、3000 分鐘。
