@@ -1,0 +1,146 @@
+[
+  {
+    "job_id": "ok",
+    "attempts": [
+      {
+        "process_code": 0,
+        "result": {
+          "schema_version": "1",
+          "pass": true,
+          "findings": []
+        }
+      }
+    ],
+    "expected": "accepted",
+    "expected_attempts": 1
+  },
+  {
+    "job_id": "business-reject",
+    "attempts": [
+      {
+        "process_code": 0,
+        "result": {
+          "schema_version": "1",
+          "pass": false,
+          "findings": [
+            {
+              "severity": "P1",
+              "message": "Missing source",
+              "evidence": "README line 3"
+            }
+          ]
+        }
+      }
+    ],
+    "expected": "review-rejected",
+    "expected_attempts": 1
+  },
+  {
+    "job_id": "malformed",
+    "attempts": [
+      {
+        "process_code": 0,
+        "result": {
+          "pass": "yes"
+        }
+      }
+    ],
+    "expected": "invalid-shape",
+    "expected_attempts": 1
+  },
+  {
+    "job_id": "contradiction",
+    "attempts": [
+      {
+        "process_code": 0,
+        "result": {
+          "schema_version": "1",
+          "pass": true,
+          "findings": [
+            {
+              "severity": "P1",
+              "message": "Missing source",
+              "evidence": "README line 3"
+            }
+          ]
+        }
+      }
+    ],
+    "expected": "contradictory-result",
+    "expected_attempts": 1
+  },
+  {
+    "job_id": "evidence",
+    "attempts": [
+      {
+        "process_code": 0,
+        "result": {
+          "schema_version": "1",
+          "pass": true,
+          "findings": [
+            {
+              "severity": "P2",
+              "message": "Claim",
+              "evidence": ""
+            }
+          ]
+        }
+      }
+    ],
+    "expected": "missing-evidence",
+    "expected_attempts": 1
+  },
+  {
+    "job_id": "policy",
+    "attempts": [
+      {
+        "process_code": 17,
+        "classification": "policy"
+      }
+    ],
+    "expected": "runtime-failed",
+    "expected_attempts": 1
+  },
+  {
+    "job_id": "recover",
+    "attempts": [
+      {
+        "process_code": 17,
+        "classification": "confirmed-transient"
+      },
+      {
+        "process_code": 0,
+        "result": {
+          "schema_version": "1",
+          "pass": true,
+          "findings": []
+        }
+      }
+    ],
+    "expected": "accepted",
+    "expected_attempts": 2
+  },
+  {
+    "job_id": "exhaust",
+    "attempts": [
+      {
+        "process_code": 17,
+        "classification": "confirmed-transient"
+      },
+      {
+        "process_code": 17,
+        "classification": "confirmed-transient"
+      },
+      {
+        "process_code": 17,
+        "classification": "confirmed-transient"
+      },
+      {
+        "process_code": 17,
+        "classification": "confirmed-transient"
+      }
+    ],
+    "expected": "retry-exhausted",
+    "expected_attempts": 3
+  }
+]

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" style="background:#101411; border-radius:16px;">
+    <defs>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+        </filter>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 9 5 L 0 9 z" fill="#c5f36c" />
+        </marker>
+        <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e2e25" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#101411" stop-opacity="1" />
+        </radialGradient>
+    </defs>
+
+    <!-- Subtle Background Glow -->
+    <rect width="900" height="600" rx="16" fill="url(#bg-glow)" />
+
+    <!-- Subtle Background Tech Grid -->
+    <g opacity="0.15">
+        <line x1="0" y1="100" x2="900" y2="100" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="200" x2="900" y2="200" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="300" x2="900" y2="300" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="400" x2="900" y2="400" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="500" x2="900" y2="500" stroke="#3d5145" stroke-width="1" />
+        <line x1="150" y1="0" x2="150" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="300" y1="0" x2="300" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="450" y1="0" x2="450" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="600" y1="0" x2="600" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="750" y1="0" x2="750" y2="600" stroke="#3d5145" stroke-width="1" />
+    </g>
+
+    <!-- Header Label -->
+    <g transform="translate(60, 60)">
+        <rect width="110" height="26" rx="13" fill="#1b2621" stroke="#3d5145" />
+        <text x="14" y="17" fill="#c5f36c" font-family="monospace" font-size="11" font-weight="bold">LESSON 16</text>
+        <text x="130" y="18" fill="#f2f1e9" font-family="'Noto Sans TC', sans-serif" font-weight="600" font-size="15">Codex 與 GPT Image 生圖</text>
+    </g>
+
+    <!-- Specific Visual Content -->
+    
+        <!-- Canvas with Generated Transparent Avatar -->
+        <g transform="translate(160, 150)">
+            <rect width="320" height="260" rx="14" fill="#141c18" stroke="#c5f36c" stroke-width="2" filter="url(#shadow)" />
+            <!-- Checkerboard pattern for transparency -->
+            <pattern id="checkers" width="16" height="16" patternUnits="userSpaceOnUse">
+                <rect width="8" height="8" fill="#1b2621" />
+                <rect x="8" width="8" height="8" fill="#202a24" />
+                <rect y="8" width="8" height="8" fill="#202a24" />
+                <rect x="8" y="8" width="8" height="8" fill="#1b2621" />
+            </pattern>
+            <rect x="15" y="15" width="290" height="230" rx="8" fill="url(#checkers)" />
+
+            <!-- Cute Robot Illustration in Center -->
+            <g transform="translate(160, 130)">
+                <circle cx="0" cy="0" r="38" fill="#2b3b33" stroke="#c5f36c" stroke-width="3" filter="url(#glow)" />
+                <rect x="-24" y="-14" width="48" height="24" rx="10" fill="#101813" />
+                <circle cx="-10" cy="-2" r="5" fill="#c5f36c" />
+                <circle cx="10" cy="-2" r="5" fill="#c5f36c" />
+                <path d="M 0 -38 L 0 -50" stroke="#c5f36c" stroke-width="3" stroke-linecap="round" />
+                <circle cx="0" cy="-52" r="4" fill="#ff9c6b" />
+            </g>
+        </g>
+
+        <!-- Prompt Brief & Editing Palette (Right) -->
+        <g transform="translate(520, 150)">
+            <rect width="240" height="260" rx="14" fill="#1b2621" stroke="#3d5145" stroke-width="2" filter="url(#shadow)" />
+            <text x="25" y="35" fill="#c5f36c" font-family="monospace" font-weight="bold" font-size="12">brief.md</text>
+            <rect x="25" y="55" width="190" height="6" rx="3" fill="#f2f1e9" />
+            <rect x="25" y="70" width="160" height="6" rx="3" fill="#59665d" />
+            <rect x="25" y="85" width="180" height="6" rx="3" fill="#59665d" />
+
+            <!-- Palette chips -->
+            <text x="25" y="130" fill="#a4a69c" font-family="monospace" font-size="11">Target Palette</text>
+            <circle cx="40" cy="155" r="12" fill="#c5f36c" />
+            <circle cx="75" cy="155" r="12" fill="#ff9c6b" />
+            <circle cx="110" cy="155" r="12" fill="#64dfca" />
+            <circle cx="145" cy="155" r="12" fill="#101813" stroke="#3d5145" />
+
+            <!-- Verification Tag -->
+            <rect x="25" y="195" width="190" height="34" rx="6" fill="#182c20" stroke="#c5f36c" />
+            <text x="40" y="217" fill="#c5f36c" font-family="monospace" font-size="11">alpha-transparent · OK</text>
+        </g>
+        
+</svg>

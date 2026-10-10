@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" style="background:#101411; border-radius:16px;">
+    <defs>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+        </filter>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 9 5 L 0 9 z" fill="#c5f36c" />
+        </marker>
+        <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e2e25" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#101411" stop-opacity="1" />
+        </radialGradient>
+    </defs>
+
+    <!-- Subtle Background Glow -->
+    <rect width="900" height="600" rx="16" fill="url(#bg-glow)" />
+
+    <!-- Subtle Background Tech Grid -->
+    <g opacity="0.15">
+        <line x1="0" y1="100" x2="900" y2="100" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="200" x2="900" y2="200" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="300" x2="900" y2="300" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="400" x2="900" y2="400" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="500" x2="900" y2="500" stroke="#3d5145" stroke-width="1" />
+        <line x1="150" y1="0" x2="150" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="300" y1="0" x2="300" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="450" y1="0" x2="450" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="600" y1="0" x2="600" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="750" y1="0" x2="750" y2="600" stroke="#3d5145" stroke-width="1" />
+    </g>
+
+    <!-- Header Label -->
+    <g transform="translate(60, 60)">
+        <rect width="110" height="26" rx="13" fill="#1b2621" stroke="#3d5145" />
+        <text x="14" y="17" fill="#c5f36c" font-family="monospace" font-size="11" font-weight="bold">LESSON 06</text>
+        <text x="130" y="18" fill="#f2f1e9" font-family="'Noto Sans TC', sans-serif" font-weight="600" font-size="15">Git、Worktree 與平行任務</text>
+    </g>
+
+    <!-- Specific Visual Content -->
+    
+        <!-- Main Trunk Line -->
+        <line x1="160" y1="300" x2="300" y2="300" stroke="#3d5145" stroke-width="6" />
+        <circle cx="200" cy="300" r="10" fill="#1b2621" stroke="#c5f36c" stroke-width="3" />
+        <circle cx="280" cy="300" r="10" fill="#1b2621" stroke="#c5f36c" stroke-width="3" />
+
+        <!-- Split into 3 Worktrees -->
+        <!-- Top Track -->
+        <path d="M 280 300 C 350 300 370 170 450 170 L 620 170" fill="none" stroke="#c5f36c" stroke-width="4" />
+        <g transform="translate(480, 125)">
+            <rect width="180" height="70" rx="10" fill="#1b2621" stroke="#c5f36c" stroke-width="2" filter="url(#shadow)" />
+            <text x="15" y="26" fill="#c5f36c" font-family="monospace" font-size="11">worktree: feat/ui</text>
+            <rect x="15" y="38" width="120" height="6" rx="3" fill="#59665d" />
+            <circle cx="150" cy="22" r="5" fill="#27c93f" />
+        </g>
+
+        <!-- Center Track -->
+        <line x1="280" y1="300" x2="620" y2="300" stroke="#ff9c6b" stroke-width="4" />
+        <g transform="translate(480, 255)">
+            <rect width="180" height="70" rx="10" fill="#1b2621" stroke="#ff9c6b" stroke-width="2" filter="url(#shadow)" />
+            <text x="15" y="26" fill="#ff9c6b" font-family="monospace" font-size="11">worktree: fix/auth</text>
+            <rect x="15" y="38" width="130" height="6" rx="3" fill="#59665d" />
+            <circle cx="150" cy="22" r="5" fill="#27c93f" />
+        </g>
+
+        <!-- Bottom Track -->
+        <path d="M 280 300 C 350 300 370 430 450 430 L 620 430" fill="none" stroke="#64dfca" stroke-width="4" />
+        <g transform="translate(480, 385)">
+            <rect width="180" height="70" rx="10" fill="#1b2621" stroke="#64dfca" stroke-width="2" filter="url(#shadow)" />
+            <text x="15" y="26" fill="#64dfca" font-family="monospace" font-size="11">worktree: test/e2e</text>
+            <rect x="15" y="38" width="110" height="6" rx="3" fill="#59665d" />
+            <circle cx="150" cy="22" r="5" fill="#27c93f" />
+        </g>
+
+        <!-- Merging Point -->
+        <path d="M 620 170 C 690 170 700 300 740 300" fill="none" stroke="#c5f36c" stroke-width="3" />
+        <path d="M 620 300 L 740 300" stroke="#ff9c6b" stroke-width="3" />
+        <path d="M 620 430 C 690 430 700 300 740 300" fill="none" stroke="#64dfca" stroke-width="3" />
+        <circle cx="740" cy="300" r="14" fill="#101813" stroke="#c5f36c" stroke-width="3" filter="url(#glow)" />
+        <path d="M 734 300 L 738 304 L 746 295" fill="none" stroke="#c5f36c" stroke-width="2.5" stroke-linecap="round" />
+        
+</svg>

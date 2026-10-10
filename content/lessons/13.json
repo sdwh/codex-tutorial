@@ -40,7 +40,7 @@
     {
       "tag": "CONCEPT",
       "title": "把重複檢查掛在正確事件上",
-      "html": "<p>你已經會在任務中要求測試；現在要讓某些提醒在固定時機出現。Hook 是代理生命週期的事件處理器：收到結構化輸入，執行你提供的程式，再回傳該事件支援的結果。它適合記錄執行摘要、補入短脈絡、檢查特定工具參數。先定義「何時、檢查什麼、失敗如何處理」，不要一開始就記錄整段聊天。</p><p>本課以本機 Codex CLI 為操作環境，文件查核日期為 2026-10-10。先執行 codex --version 與 codex --help，記下版本；如果 /hooks 不存在或設定被判定無效，先核對你安裝的版本，而非假設所有 ChatGPT 網頁、Cloud、IDE 都支援相同事件。離線主實作不需帳號、不呼叫模型。<a href=\"https://learn.chatgpt.com/docs/hooks\" target=\"_blank\" rel=\"noreferrer\">官方 Hooks 文件</a></p><p>練習素材：<a href=\"examples/13/pre_tool.py\" download>pre_tool.py</a>、<a href=\"examples/13/allow.json\" download>allow.json</a>、<a href=\"examples/13/block.json\" download>block.json</a>。下載後在新練習資料夾執行，勿直接改動正式專案設定。</p>"
+      "html": "<div class=\"callout\"><b>操作入口：</b>本課連線實作以 Codex CLI 為準。Hook 配置由執行 Codex 的 host 載入；先確認事件支援、信任與啟動方式。把 hooks.json 貼到網頁 Chat／Work，不會把本機事件接上網頁任務。</div><p>你已經會在任務中要求測試；現在要讓某些提醒在固定時機出現。Hook 是代理生命週期的事件處理器：收到結構化輸入，執行你提供的程式，再回傳該事件支援的結果。它適合記錄執行摘要、補入短脈絡、檢查特定工具參數。先定義「何時、檢查什麼、失敗如何處理」，不要一開始就記錄整段聊天。</p><p>本課以本機 Codex CLI 為操作環境，文件查核日期為 2026-10-10。先執行 codex --version 與 codex --help，記下版本；如果 /hooks 不存在或設定被判定無效，先核對你安裝的版本，而非假設所有 ChatGPT 網頁、Cloud、IDE 都支援相同事件。離線主實作不需帳號、不呼叫模型。<a href=\"https://learn.chatgpt.com/docs/hooks\" target=\"_blank\" rel=\"noreferrer\">官方 Hooks 文件</a></p><p>練習素材：<a href=\"examples/13/pre_tool.py\" download>pre_tool.py</a>、<a href=\"examples/13/allow.json\" download>allow.json</a>、<a href=\"examples/13/block.json\" download>block.json</a>。下載後在新練習資料夾執行，勿直接改動正式專案設定。</p>"
     },
     {
       "tag": "MAP",

@@ -1,0 +1,1 @@
+Synthetic task: create a local report for 5 orders. Keep source evidence and never publish.

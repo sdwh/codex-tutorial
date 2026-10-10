@@ -1,6 +1,6 @@
 # Codex 實戰學院
 
-> 繁體中文 40 小時完整實作課程：20 單元 × 120 分鐘。時間含閱讀、操作與驗收；三篇進階指南不重複計入。
+> 繁體中文 50 小時完整實作課程：25 單元 × 120 分鐘。時間含閱讀、操作與驗收；三篇進階指南不重複計入。
 
 ## 課程
 - [01 Codex 工作循環與任務設計](https://codex-tutorial.sdwh.dev/01-tasking.html): 理解 agent 工作方式；練習目標、脈絡、限制與驗收。
@@ -23,6 +23,13 @@
 - [18 Remotion 資料驅動動畫](https://codex-tutorial.sdwh.dev/18-remotion.html): 以 React、影格與資料製作可重用動畫。
 - [19 POP3 郵件擷取與自動處理](https://codex-tutorial.sdwh.dev/19-pop3-mail.html): 解析郵件、去重、分類與建立處理佇列。
 - [20 資料報告與自動化整合](https://codex-tutorial.sdwh.dev/20-data-capstone.html): 清理、驗證與彙整資料，交付可重跑流程。
+- [21 codex exec：從單次任務到可靠批次](https://codex-tutorial.sdwh.dev/21-codex-exec.html): 管理輸入、JSONL、結果驗收與失敗，建立可重跑的批次流程。
+- [22 CLI 設定、權限與診斷](https://codex-tutorial.sdwh.dev/22-config-diagnostics.html): 釐清設定優先序、信任、沙箱與命令規則，診斷環境差異。
+- [23 長任務、脈絡壓縮與失敗恢復](https://codex-tutorial.sdwh.dev/23-context-recovery.html): 建立檢查點、可核對的交接與恢復策略，延續跨會話工作。
+- [24 可重用 Skill 的設計、測試與維護](https://codex-tutorial.sdwh.dev/24-skill-engineering.html): 設計觸發範圍、確定性腳本、參考資料與版本驗收。
+- [25 工作流評估與50小時畢業實作](https://codex-tutorial.sdwh.dev/25-workflow-evaluation.html): 比較提示與工作流，核對證據，交付具恢復能力的完整流程。
+
+- [入口比較](https://codex-tutorial.sdwh.dev/surfaces.html): 區分 ChatGPT Chat／Work、Codex App／CLI 與本機／雲端環境。
 
 ## 進階指南
 - [客製化](https://codex-tutorial.sdwh.dev/customization.html)

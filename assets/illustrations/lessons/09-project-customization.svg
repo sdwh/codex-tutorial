@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" style="background:#101411; border-radius:16px;">
+    <defs>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+        </filter>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 9 5 L 0 9 z" fill="#c5f36c" />
+        </marker>
+        <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e2e25" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#101411" stop-opacity="1" />
+        </radialGradient>
+    </defs>
+
+    <!-- Subtle Background Glow -->
+    <rect width="900" height="600" rx="16" fill="url(#bg-glow)" />
+
+    <!-- Subtle Background Tech Grid -->
+    <g opacity="0.15">
+        <line x1="0" y1="100" x2="900" y2="100" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="200" x2="900" y2="200" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="300" x2="900" y2="300" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="400" x2="900" y2="400" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="500" x2="900" y2="500" stroke="#3d5145" stroke-width="1" />
+        <line x1="150" y1="0" x2="150" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="300" y1="0" x2="300" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="450" y1="0" x2="450" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="600" y1="0" x2="600" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="750" y1="0" x2="750" y2="600" stroke="#3d5145" stroke-width="1" />
+    </g>
+
+    <!-- Header Label -->
+    <g transform="translate(60, 60)">
+        <rect width="110" height="26" rx="13" fill="#1b2621" stroke="#3d5145" />
+        <text x="14" y="17" fill="#c5f36c" font-family="monospace" font-size="11" font-weight="bold">LESSON 09</text>
+        <text x="130" y="18" fill="#f2f1e9" font-family="'Noto Sans TC', sans-serif" font-weight="600" font-size="15">AGENTS.md、RAG、Skills 與 MCP</text>
+    </g>
+
+    <!-- Specific Visual Content -->
+    
+        <!-- Central Project Root -->
+        <circle cx="450" cy="300" r="60" fill="#101813" stroke="#c5f36c" stroke-width="3" filter="url(#glow)" />
+        <text x="415" y="295" fill="#f2f1e9" font-family="monospace" font-weight="bold" font-size="13">PROJECT</text>
+        <text x="430" y="315" fill="#c5f36c" font-family="monospace" font-size="11">ROOT</text>
+
+        <!-- Satellite 1: AGENTS.md (Top Left) -->
+        <g transform="translate(180, 100)">
+            <rect width="180" height="110" rx="12" fill="#1b2621" stroke="#3d5145" stroke-width="2" filter="url(#shadow)" />
+            <text x="18" y="28" fill="#c5f36c" font-family="monospace" font-weight="bold" font-size="12">AGENTS.md</text>
+            <rect x="18" y="45" width="90" height="6" rx="3" fill="#59665d" />
+            <rect x="18" y="60" width="130" height="6" rx="3" fill="#3d5145" />
+            <rect x="18" y="75" width="110" height="6" rx="3" fill="#3d5145" />
+            <line x1="180" y1="90" x2="400" y2="260" stroke="#3d5145" stroke-width="2" />
+        </g>
+
+        <!-- Satellite 2: Skills Drawer (Top Right) -->
+        <g transform="translate(540, 100)">
+            <rect width="180" height="110" rx="12" fill="#1b2621" stroke="#ff9c6b" stroke-width="2" filter="url(#shadow)" />
+            <text x="18" y="28" fill="#ff9c6b" font-family="monospace" font-weight="bold" font-size="12">Custom Skills</text>
+            <rect x="18" y="45" width="144" height="22" rx="5" fill="#25322b" stroke="#3d5145" />
+            <text x="28" y="60" fill="#c5f36c" font-family="monospace" font-size="11">$review-pr</text>
+            <rect x="18" y="75" width="144" height="22" rx="5" fill="#25322b" stroke="#3d5145" />
+            <text x="28" y="90" fill="#c5f36c" font-family="monospace" font-size="11">$generate-docs</text>
+            <line x1="540" y1="90" x2="490" y2="250" stroke="#ff9c6b" stroke-width="2" />
+        </g>
+
+        <!-- Satellite 3: MCP Hub (Bottom Left) -->
+        <g transform="translate(180, 380)">
+            <rect width="180" height="110" rx="12" fill="#1b2621" stroke="#64dfca" stroke-width="2" filter="url(#shadow)" />
+            <text x="18" y="28" fill="#64dfca" font-family="monospace" font-weight="bold" font-size="12">MCP Protocols</text>
+            <circle cx="30" cy="55" r="6" fill="#64dfca" /><text x="45" y="60" fill="#f2f1e9" font-family="monospace" font-size="11">Postgres</text>
+            <circle cx="30" cy="80" r="6" fill="#c5f36c" /><text x="45" y="85" fill="#f2f1e9" font-family="monospace" font-size="11">GitHub API</text>
+            <line x1="180" y1="390" x2="400" y2="330" stroke="#64dfca" stroke-width="2" />
+        </g>
+
+        <!-- Satellite 4: RAG Docs Index (Bottom Right) -->
+        <g transform="translate(540, 380)">
+            <rect width="180" height="110" rx="12" fill="#1b2621" stroke="#c5f36c" stroke-width="2" filter="url(#shadow)" />
+            <text x="18" y="28" fill="#c5f36c" font-family="monospace" font-weight="bold" font-size="12">RAG Index</text>
+            <rect x="18" y="48" width="140" height="8" rx="4" fill="#25322b" />
+            <rect x="18" y="65" width="110" height="8" rx="4" fill="#25322b" />
+            <rect x="18" y="82" width="130" height="8" rx="4" fill="#25322b" />
+            <line x1="540" y1="390" x2="490" y2="340" stroke="#c5f36c" stroke-width="2" />
+        </g>
+        
+</svg>

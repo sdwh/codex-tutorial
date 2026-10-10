@@ -85,6 +85,26 @@
     <lastmod>2026-10-10</lastmod>
   </url>
   <url>
+    <loc>https://codex-tutorial.sdwh.dev/21-codex-exec.html</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://codex-tutorial.sdwh.dev/22-config-diagnostics.html</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://codex-tutorial.sdwh.dev/23-context-recovery.html</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://codex-tutorial.sdwh.dev/24-skill-engineering.html</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://codex-tutorial.sdwh.dev/25-workflow-evaluation.html</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+  <url>
     <loc>https://codex-tutorial.sdwh.dev/customization.html</loc>
     <lastmod>2026-10-10</lastmod>
   </url>
@@ -94,6 +114,14 @@
   </url>
   <url>
     <loc>https://codex-tutorial.sdwh.dev/multi-agent.html</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://codex-tutorial.sdwh.dev/surfaces.html</loc>
+    <lastmod>2026-10-10</lastmod>
+  </url>
+  <url>
+    <loc>https://codex-tutorial.sdwh.dev/assets.html</loc>
     <lastmod>2026-10-10</lastmod>
   </url>
 </urlset>

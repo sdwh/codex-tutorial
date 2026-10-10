@@ -169,16 +169,17 @@
 
   const path = $('#learning-path');
   const routes = {
-    start: ['01', '02', '05'], build: ['03', '04', '05', '07', '12'], scale: ['06', '08', '09', '10'],
-    automation: ['11', '13', '14', '15', '19', '20'], creative: ['16', '17', '18'], all: []
+    start: ['01', '02', '05'], build: ['03', '04', '05', '07', '12'], scale: ['06', '08', '09', '10', '22', '23', '25'],
+    automation: ['11', '13', '14', '15', '19', '20', '21', '24'], deep: ['21', '22', '23', '24', '25'], creative: ['16', '17', '18'], all: []
   };
   const descriptions = {
     start: '推薦 01 → 02 → 05：交辦、脈絡與驗收。',
     build: '推薦 03 → 04 → 05 → 07 → 12：除錯、開發、驗收、介面與案例。',
-    scale: '推薦 06 → 08 → 09 → 10：隔離、遠端、客製化與第一階段整合。',
-    automation: '推薦 11 → 13 → 14 → 15 → 19 → 20：應用、Hooks、SDK、擴充、郵件與資料整合。',
+    scale: '推薦 06 → 08 → 09 → 10 → 22 → 23 → 25：協作、設定診斷、恢復與評估。',
+    automation: '推薦 11 → 13 → 14 → 15 → 19 → 20 → 21 → 24：應用、工具、資料、批次與 Skill 工程。',
+    deep: '推薦 21 → 22 → 23 → 24 → 25：可靠批次、權限診斷、長任務、Skill 工程與畢業實作。',
     creative: '推薦 16 → 17 → 18：生圖素材、影片剪輯與動畫製作。',
-    all: '依 01–20 完成四個階段，每階段 10 小時；也可依需求先選主題。'
+    all: '依 01–25 完成五個階段，每階段 10 小時；也可依需求先選主題。'
   };
   if (path) path.addEventListener('change', () => {
     $$('.course-card').forEach(card => card.classList.toggle('recommended', (routes[path.value] || []).includes(card.dataset.lesson)));

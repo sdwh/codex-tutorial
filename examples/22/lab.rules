@@ -1,0 +1,14 @@
+prefix_rule(
+    pattern = ["git", "status"],
+    decision = "allow",
+    justification = "Teaching rule for a narrow read-only inspection",
+    match = ["git status", "git status --short"],
+    not_match = ["git log", "git push"],
+)
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "forbidden",
+    justification = "User publishes manually after reviewing the changes",
+    match = ["git push", "git push origin main"],
+    not_match = ["git status"],
+)

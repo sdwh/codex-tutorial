@@ -1,0 +1,3 @@
+Goal: produce a local review draft from synthetic orders.
+Constraint: never send email, publish, delete data, or call a paid API.
+Next: validate source timestamps and totals.

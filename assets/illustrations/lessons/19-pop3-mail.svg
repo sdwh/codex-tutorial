@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" style="background:#101411; border-radius:16px;">
+    <defs>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+        </filter>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 9 5 L 0 9 z" fill="#c5f36c" />
+        </marker>
+        <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e2e25" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#101411" stop-opacity="1" />
+        </radialGradient>
+    </defs>
+
+    <!-- Subtle Background Glow -->
+    <rect width="900" height="600" rx="16" fill="url(#bg-glow)" />
+
+    <!-- Subtle Background Tech Grid -->
+    <g opacity="0.15">
+        <line x1="0" y1="100" x2="900" y2="100" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="200" x2="900" y2="200" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="300" x2="900" y2="300" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="400" x2="900" y2="400" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="500" x2="900" y2="500" stroke="#3d5145" stroke-width="1" />
+        <line x1="150" y1="0" x2="150" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="300" y1="0" x2="300" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="450" y1="0" x2="450" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="600" y1="0" x2="600" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="750" y1="0" x2="750" y2="600" stroke="#3d5145" stroke-width="1" />
+    </g>
+
+    <!-- Header Label -->
+    <g transform="translate(60, 60)">
+        <rect width="110" height="26" rx="13" fill="#1b2621" stroke="#3d5145" />
+        <text x="14" y="17" fill="#ff9c6b" font-family="monospace" font-size="11" font-weight="bold">LESSON 19</text>
+        <text x="130" y="18" fill="#f2f1e9" font-family="'Noto Sans TC', sans-serif" font-weight="600" font-size="15">POP3 郵件擷取與自動處理</text>
+    </g>
+
+    <!-- Specific Visual Content -->
+    
+        <!-- Envelopes Ingestion Stream (Left) -->
+        <g transform="translate(150, 160)">
+            <g transform="translate(0, 0)">
+                <rect width="120" height="75" rx="8" fill="#1b2621" stroke="#ff9c6b" stroke-width="2" />
+                <path d="M 0 0 L 60 45 L 120 0" fill="none" stroke="#ff9c6b" stroke-width="2" />
+            </g>
+            <g transform="translate(30, 95)">
+                <rect width="120" height="75" rx="8" fill="#1b2621" stroke="#c5f36c" stroke-width="2" />
+                <path d="M 0 0 L 60 45 L 120 0" fill="none" stroke="#c5f36c" stroke-width="2" />
+            </g>
+        </g>
+
+        <!-- Deduplication & Filter Funnel (Center) -->
+        <g transform="translate(360, 200)">
+            <path d="M 0 0 L 120 0 L 80 120 L 40 120 Z" fill="#1f2c25" stroke="#3d5145" stroke-width="2" />
+            <circle cx="60" cy="50" r="16" fill="#101813" stroke="#64dfca" stroke-width="2" />
+            <text x="54" y="55" fill="#64dfca" font-family="monospace" font-size="12">ID</text>
+            <path d="M 60 120 L 60 170" stroke="#c5f36c" stroke-width="4" marker-end="url(#arrow)" />
+        </g>
+
+        <!-- Processed Clean Queue (Right) -->
+        <g transform="translate(540, 160)">
+            <rect width="220" height="240" rx="14" fill="#141c18" stroke="#c5f36c" stroke-width="2" filter="url(#shadow)" />
+            <text x="20" y="32" fill="#c5f36c" font-family="monospace" font-weight="bold" font-size="12">Deduplicated Queue</text>
+            <rect x="20" y="50" width="180" height="45" rx="6" fill="#1b2621" stroke="#3d5145" />
+            <circle cx="35" cy="72" r="6" fill="#27c93f" /><text x="50" y="76" fill="#f2f1e9" font-family="monospace" font-size="10">task_101 · Order #42</text>
+            <rect x="20" y="105" width="180" height="45" rx="6" fill="#1b2621" stroke="#3d5145" />
+            <circle cx="35" cy="127" r="6" fill="#27c93f" /><text x="50" y="131" fill="#f2f1e9" font-family="monospace" font-size="10">task_102 · Alert #09</text>
+            <rect x="20" y="160" width="180" height="45" rx="6" fill="#1b2621" stroke="#3d5145" />
+            <circle cx="35" cy="182" r="6" fill="#27c93f" /><text x="50" y="186" fill="#f2f1e9" font-family="monospace" font-size="10">task_103 · Report #17</text>
+        </g>
+        
+</svg>

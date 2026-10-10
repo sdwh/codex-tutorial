@@ -2,7 +2,7 @@
   "id": "20",
   "slug": "20-data-capstone",
   "title": "資料報告與自動化整合實作",
-  "description": "把 CSV 與 JSON 變成可追溯報告，處理時區、去重與錯誤，再完成郵件或媒體流程的最終專案。",
+  "description": "把 CSV 與 JSON 變成可追溯報告，處理時區、去重與錯誤，再完成郵件或媒體流程的第四階段專案。",
   "track": "automation",
   "minutes": 120,
   "prerequisites": [

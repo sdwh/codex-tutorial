@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" style="background:#101411; border-radius:16px;">
+    <defs>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+        </filter>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 9 5 L 0 9 z" fill="#c5f36c" />
+        </marker>
+        <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e2e25" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#101411" stop-opacity="1" />
+        </radialGradient>
+    </defs>
+
+    <!-- Subtle Background Glow -->
+    <rect width="900" height="600" rx="16" fill="url(#bg-glow)" />
+
+    <!-- Subtle Background Tech Grid -->
+    <g opacity="0.15">
+        <line x1="0" y1="100" x2="900" y2="100" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="200" x2="900" y2="200" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="300" x2="900" y2="300" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="400" x2="900" y2="400" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="500" x2="900" y2="500" stroke="#3d5145" stroke-width="1" />
+        <line x1="150" y1="0" x2="150" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="300" y1="0" x2="300" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="450" y1="0" x2="450" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="600" y1="0" x2="600" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="750" y1="0" x2="750" y2="600" stroke="#3d5145" stroke-width="1" />
+    </g>
+
+    <!-- Header Label -->
+    <g transform="translate(60, 60)">
+        <rect width="110" height="26" rx="13" fill="#1b2621" stroke="#3d5145" />
+        <text x="14" y="17" fill="#64dfca" font-family="monospace" font-size="11" font-weight="bold">LESSON 22</text>
+        <text x="130" y="18" fill="#f2f1e9" font-family="'Noto Sans TC', sans-serif" font-weight="600" font-size="15">CLI 設定、權限與診斷</text>
+    </g>
+
+    <!-- Specific Visual Content -->
+    
+        <!-- Layered Config Cascade (Left) -->
+        <g transform="translate(150, 160)">
+            <!-- Bottom layer: Global -->
+            <rect x="30" y="0" width="220" height="70" rx="10" fill="#161f1b" stroke="#3d5145" />
+            <text x="50" y="35" fill="#59665d" font-family="monospace" font-size="11">03: ~/.codex/config.toml</text>
+            <!-- Middle layer: Project -->
+            <rect x="15" y="45" width="220" height="70" rx="10" fill="#1c2621" stroke="#3d5145" />
+            <text x="35" y="80" fill="#a4a69c" font-family="monospace" font-size="11">02: .codex/project.toml</text>
+            <!-- Top layer: Environment Override -->
+            <rect x="0" y="90" width="220" height="70" rx="10" fill="#23322b" stroke="#c5f36c" stroke-width="2" filter="url(#shadow)" />
+            <text x="20" y="125" fill="#c5f36c" font-family="monospace" font-weight="bold" font-size="11">01: --profile staging</text>
+        </g>
+
+        <!-- Sandbox & Diagnostic Lens (Right) -->
+        <g transform="translate(480, 170)">
+            <rect width="270" height="220" rx="16" fill="#141c18" stroke="#64dfca" stroke-width="2" filter="url(#shadow)" />
+            <!-- Security Shield -->
+            <path d="M 60 40 L 110 20 L 160 40 L 160 90 Q 110 130 110 130 Q 60 90 60 90 Z" fill="#1f3328" stroke="#64dfca" stroke-width="2" />
+            <circle cx="110" cy="70" r="14" fill="#101813" stroke="#c5f36c" stroke-width="2" />
+            <path d="M 104 70 L 108 74 L 116 66" fill="none" stroke="#c5f36c" stroke-width="2.5" />
+            <text x="45" y="160" fill="#f2f1e9" font-family="monospace" font-size="12">Sandbox Boundary OK</text>
+            <text x="45" y="185" fill="#64dfca" font-family="monospace" font-size="11">0 permission escapes</text>
+        </g>
+        
+</svg>

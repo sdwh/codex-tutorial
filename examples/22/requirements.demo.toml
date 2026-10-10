@@ -1,0 +1,2 @@
+# EDUCATIONAL input for config_lab.py only. Not an installable requirements.toml.
+allowed_sandbox_modes = ["read-only", "workspace-write"]

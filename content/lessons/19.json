@@ -41,7 +41,7 @@
     {
       "tag": "CONCEPT",
       "title": "先把郵件變成可驗收的資料",
-      "html": "<p>本單元要做的是「取得 → 解析 → 分類 → 草稿 → 人工確認」。Codex 負責建立腳本與測試，不需要你把信箱密碼貼進對話。先用虛構的三封郵件建立可重現流程，確認帳務信、一般信、附件信如何落到不同佇列，再討論真實連線。課程範例只用 Python 標準函式庫，不需要模型 API，也不會真的寄信。</p><p>POP3 是下載郵件的協定，不提供完整跨裝置資料夾同步。本課採用它來理解批次擷取；需要標籤、搜尋、同步已讀狀態時，評估 IMAP 或供應商正式 API。不要把本機分類結果誤認為伺服器標籤已經更新。</p><p>參考：<a href=\"https://docs.python.org/3/library/poplib.html\" target=\"_blank\" rel=\"noreferrer\">Python POP3 文件</a>。</p>"
+      "html": "<div class=\"callout\"><b>操作入口：</b>讀信由 Python POP3 腳本執行，Codex 負責編寫、調用與驗證。先以本機 .eml 完成離線驗收；連線收信需另配置帳號、網路與授權。ChatGPT 郵件 plugin 是另一條資料存取路徑，並非這份 POP3 腳本的登入方式。</div><p>本單元要做的是「取得 → 解析 → 分類 → 草稿 → 人工確認」。Codex 負責建立腳本與測試，不需要你把信箱密碼貼進對話。先用虛構的三封郵件建立可重現流程，確認帳務信、一般信、附件信如何落到不同佇列，再討論真實連線。課程範例只用 Python 標準函式庫，不需要模型 API，也不會真的寄信。</p><p>POP3 是下載郵件的協定，不提供完整跨裝置資料夾同步。本課採用它來理解批次擷取；需要標籤、搜尋、同步已讀狀態時，評估 IMAP 或供應商正式 API。不要把本機分類結果誤認為伺服器標籤已經更新。</p><p>參考：<a href=\"https://docs.python.org/3/library/poplib.html\" target=\"_blank\" rel=\"noreferrer\">Python POP3 文件</a>。</p>"
     },
     {
       "tag": "SETUP",

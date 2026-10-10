@@ -1,0 +1,4 @@
+file,purpose,source,rights,sha256
+card.txt,synthetic teaching asset,local fixture,synthetic fixture,e8b10d761fa9ccdf7f9f6cf3e7c5d7b83e4025b4e693ccd0caf62c23859277bb
+../outside.txt,test,fixture,synthetic fixture,0000000000000000000000000000000000000000000000000000000000000000
+card.txt,duplicate,fixture,,0000000000000000000000000000000000000000000000000000000000000000

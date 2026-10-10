@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" style="background:#101411; border-radius:16px;">
+    <defs>
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45" />
+        </filter>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+            </feMerge>
+        </filter>
+        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 9 5 L 0 9 z" fill="#c5f36c" />
+        </marker>
+        <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1e2e25" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#101411" stop-opacity="1" />
+        </radialGradient>
+    </defs>
+
+    <!-- Subtle Background Glow -->
+    <rect width="900" height="600" rx="16" fill="url(#bg-glow)" />
+
+    <!-- Subtle Background Tech Grid -->
+    <g opacity="0.15">
+        <line x1="0" y1="100" x2="900" y2="100" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="200" x2="900" y2="200" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="300" x2="900" y2="300" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="400" x2="900" y2="400" stroke="#3d5145" stroke-width="1" />
+        <line x1="0" y1="500" x2="900" y2="500" stroke="#3d5145" stroke-width="1" />
+        <line x1="150" y1="0" x2="150" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="300" y1="0" x2="300" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="450" y1="0" x2="450" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="600" y1="0" x2="600" y2="600" stroke="#3d5145" stroke-width="1" />
+        <line x1="750" y1="0" x2="750" y2="600" stroke="#3d5145" stroke-width="1" />
+    </g>
+
+    <!-- Header Label -->
+    <g transform="translate(60, 60)">
+        <rect width="110" height="26" rx="13" fill="#1b2621" stroke="#3d5145" />
+        <text x="14" y="17" fill="#64dfca" font-family="monospace" font-size="11" font-weight="bold">LESSON 25</text>
+        <text x="130" y="18" fill="#f2f1e9" font-family="'Noto Sans TC', sans-serif" font-weight="600" font-size="15">工作流評估與50小時畢業實作</text>
+    </g>
+
+    <!-- Specific Visual Content -->
+    
+        <!-- Evaluation Radar & Scorecard (Left) -->
+        <g transform="translate(140, 150)">
+            <rect width="300" height="270" rx="16" fill="#141c18" stroke="#3d5145" stroke-width="2" filter="url(#shadow)" />
+            <text x="25" y="35" fill="#f2f1e9" font-family="monospace" font-weight="bold" font-size="13">Workflow Evaluation</text>
+            <!-- Radar Chart Polygon -->
+            <g transform="translate(150, 130)">
+                <polygon points="0,-60 57,-18 35,48 -35,48 -57,-18" fill="none" stroke="#25322b" stroke-width="2" />
+                <polygon points="0,-40 38,-12 24,32 -24,32 -38,-12" fill="none" stroke="#25322b" stroke-width="1.5" />
+                <!-- Workflow A (Green) -->
+                <polygon points="0,-55 45,-15 30,40 -20,30 -40,-10" fill="#c5f36c" fill-opacity="0.25" stroke="#c5f36c" stroke-width="2.5" />
+                <!-- Workflow B (Orange) -->
+                <polygon points="0,-30 25,-8 15,20 -30,20 -25,-8" fill="#ff9c6b" fill-opacity="0.2" stroke="#ff9c6b" stroke-width="2" stroke-dasharray="4 4" />
+            </g>
+            <text x="25" y="240" fill="#c5f36c" font-family="monospace" font-size="11">Workflow A: +42% efficiency</text>
+        </g>
+
+        <!-- 50-Hour Graduation Capstone Portfolio (Right) -->
+        <g transform="translate(480, 150)">
+            <rect width="280" height="270" rx="16" fill="#1b2621" stroke="#c5f36c" stroke-width="2.5" filter="url(#glow)" />
+            <!-- Diploma / Trophy Emblem -->
+            <circle cx="140" cy="80" r="42" fill="#101813" stroke="#64dfca" stroke-width="3" />
+            <!-- Star / Diamond -->
+            <path d="M 140 50 L 148 70 L 170 70 L 152 82 L 158 102 L 140 90 L 122 102 L 128 82 L 110 70 L 132 70 Z" fill="#c5f36c" />
+            <text x="75" y="155" fill="#f2f1e9" font-family="sans-serif" font-weight="bold" font-size="16">50 小時畢業成果</text>
+            <text x="65" y="180" fill="#a4a69c" font-family="monospace" font-size="12">Full Lifecycle Mastery</text>
+            <rect x="35" y="205" width="210" height="38" rx="8" fill="#1a2e22" stroke="#c5f36c" />
+            <text x="55" y="228" fill="#c5f36c" font-family="monospace" font-weight="bold" font-size="12">CERTIFIED COMPLETE ✓</text>
+        </g>
+        
+</svg>

@@ -1,0 +1,129 @@
+{
+  "id": "22",
+  "slug": "22-config-diagnostics",
+  "title": "CLI 設定、權限與診斷",
+  "description": "釐清設定優先序、信任、沙箱與命令規則，診斷環境差異。",
+  "track": "scale",
+  "minutes": 120,
+  "prerequisites": [
+    "完成09、14；Python3.11+讀取TOML；CLI可選"
+  ],
+  "outcomes": [
+    "辨識設定來源與信任影響",
+    "區分沙箱、命令規則與強制requirements",
+    "以最小實驗診斷配置差異"
+  ],
+  "schedule": [
+    {
+      "minutes": 15,
+      "activity": "概念、契約與環境確認"
+    },
+    {
+      "minutes": 20,
+      "activity": "引導操作與範例閱讀"
+    },
+    {
+      "minutes": 40,
+      "activity": "主要離線實作"
+    },
+    {
+      "minutes": 25,
+      "activity": "失敗變體與診斷"
+    },
+    {
+      "minutes": 20,
+      "activity": "測驗、成果核對與交接"
+    }
+  ],
+  "sections": [
+    {
+      "tag": "CONCEPT",
+      "title": "先分清意圖、配置與強制限制",
+      "html": "<div class=\"callout\"><b>操作入口：</b>本課 CLI 旗標作用於該次啟動；config.toml 屬於本機 Codex host 設定。App 的本機 Codex agent 與 CLI／IDE 使用相同設定體系，但操作介面不同。網頁 Work 的受管環境不讀取你電腦的 ~/.codex/config.toml。</div><p>第09課與客製化指南教你放置設定，本課練習解釋「為什麼沒有生效」。AGENTS.md 描述協作規則，config.toml 提供執行預設；requirements 與沙箱限制實際可做的事。寫一句允許聯網，不能讓受限環境突然有網路。診斷先記錄入口、版本、工作目錄、作業系統、登入模式與可重現命令；App、CLI、IDE可能有不同環境。不要一開始把所有權限放大。<a href=\"https://learn.chatgpt.com/docs/config-file/config-basic\" target=\"_blank\" rel=\"noreferrer\">Config basics</a>提供目前優先序與信任行為，升級前後要重新核對。以下檔案只在examples目錄，是教學素材；不覆寫你的使用者設定、不加入全域命令規則，也不假裝模擬器就是官方載入器。</p><pre><code>codex --version\ncodex --help\ncodex login status\npwd\ngit status --short</code></pre>"
+    },
+    {
+      "tag": "PRACTICE",
+      "title": "設定優先序：找出值從哪裡來",
+      "html": "<p>目前官方文件由高到低是CLI flags與--config、可信專案由repo root到CWD的配置（近處勝）、--profile選取的profile檔、使用者配置、雲端管理預設、系統配置與內建預設。每一層提供預設，強制requirements另外限制最終可用值。請先畫出你實際的CWD與各層檔案，不把另一個專案的設定混進來。選取profile也可能被更近的專案設定覆蓋。診斷某個鍵時記錄候選值、來源層與勝出的原因；巢狀表、陣列及特殊合併規則需要看官方reference，不能一律用最後dict.update解釋。新profile用 ~/.codex/名稱.config.toml 配合 --profile 名稱，不沿用過時的profiles表寫法。</p>"
+    },
+    {
+      "tag": "PRACTICE",
+      "title": "離線 lab：信任與優先序",
+      "html": "<p>下載 <a href=\"examples/22/config_lab.py\" target=\"_blank\" rel=\"noreferrer\">config_lab.py</a> 及 <a href=\"examples/22/user.toml\" target=\"_blank\" rel=\"noreferrer\">user.toml</a>、<a href=\"examples/22/profile.toml\" target=\"_blank\" rel=\"noreferrer\">profile.toml</a>、<a href=\"examples/22/project-root.toml\" target=\"_blank\" rel=\"noreferrer\">project-root.toml</a>、<a href=\"examples/22/project-near.toml\" target=\"_blank\" rel=\"noreferrer\">project-near.toml</a>、<a href=\"examples/22/requirements.demo.toml\" target=\"_blank\" rel=\"noreferrer\">requirements.demo.toml</a>、<a href=\"examples/22/invalid.toml\" target=\"_blank\" rel=\"noreferrer\">invalid.toml</a>，保持同一目錄。Python3.11+有tomllib。腳本只模擬平面鍵覆寫與一個教學requirements集合；省略系統/雲端預設及巢狀合併。先預測trusted/untrusted/CLI-read-only/CLI-too-broad四筆結果。trusted應取project-near，untrusted略過兩個project層取profile；CLI覆蓋來源但仍可能被demo requirement拒絕。invalid TOML應解析失敗。這些結果證明教材模擬邏輯，沒有更改或測試真正Codex的權限引擎。</p><pre><code>python3 examples/22/config_lab.py</code></pre>"
+    },
+    {
+      "tag": "PRACTICE",
+      "title": "信任不是永久全權限",
+      "html": "<p>官方文件指出不可信專案會略過project-scoped .codex配置、hooks與rules，使用者及系統層仍可載入。信任的目的是決定是否採用專案提供的設定；它不等於批准所有命令，也不替代沙箱。第一次讀陌生repo先檢查設定與腳本，了解內容後再決定信任。變體：在lab把近層web_search改為disabled，再看trusted/untrusted結果；回到真實環境則只在隔離練習repo操作並記錄差異。App能用但CI不能用，應比較帳號、CLI版本、工作目錄、信任與依賴，而不是立刻斷言模型不會用工具。把原因寫成可重現問題，能讓另一人不用猜就核對。</p>"
+    },
+    {
+      "tag": "PRACTICE",
+      "title": "命令規則與沙箱要分別檢查",
+      "html": "<p>命令規則判斷某個命令應allow、prompt或forbidden，沙箱另外控制檔案與網路。allow規則不會創造網路、寫入protected目錄或越過管理限制。<a href=\"https://learn.chatgpt.com/docs/agent-configuration/rules\" target=\"_blank\" rel=\"noreferrer\">Rules</a>說明prefix_rule與規則測試。下載 <a href=\"examples/22/lab.rules\" target=\"_blank\" rel=\"noreferrer\">lab.rules</a>，先閱讀內容，再用preview的execpolicy check只評估命令；這步不執行被檢查命令，不把樣本裝到全域。多規則命中按最嚴格decision看結果，不能只挑allow那條。寬泛python或shell前綴可能包含任意程式，應針對具體且可辨識的工作縮小範圍。若你的版本沒有execpolicy，記錄未支援，不把缺少檢查當作規則已通過。</p><pre><code>codex execpolicy --help\ncodex execpolicy check --rules examples/22/lab.rules --pretty -- git status\ncodex execpolicy check --rules examples/22/lab.rules --pretty -- git push</code></pre><h3>配置實驗不能取代執行環境證據</h3><p>離線profile.toml是教材刻意取的短檔名，真正profile需用官方名稱.config.toml放在CODEX_HOME。requirements.demo.toml只給模擬器讀，不是可直接部署的管理策略。lab中的approval_policy=never表示不要求互動審批，沒有自動放寬sandbox；在更嚴的管理環境可能不允許。解釋每個值時同時寫出它沒有改變的其他層，避免把「沒有彈窗」當成「任何事情都能做」。把lab輸出與真實CLI診斷分開保存，不拿模擬accepted當成公司機器允許的證據。</p>"
+    },
+    {
+      "tag": "PRACTICE",
+      "title": "用一個可回復的設定實驗取代大幅修改",
+      "html": "<p>選一個能觀察的行為，例如read-only執行或web_search=disabled。先記錄原狀與預期，再在隔離專案以一次性-c覆蓋；不要同時換模型、profile、權限與MCP。TOML字串仍須正確引號，下方示範只是一個可選模型呼叫；未執行時不能稱已驗證設定效果。若組織requirements拒絕，保留拒絕原因，不移除策略重試。完成後移除這次覆蓋並核對回復。<a href=\"https://learn.chatgpt.com/docs/config-file/config-advanced\" target=\"_blank\" rel=\"noreferrer\">Advanced Configuration</a>可查一次性override與profile。不同環境的保護路徑與網路可用性仍由該環境控制；教材不承諾這條命令在每個帳號上都有相同工具。</p><pre><code>codex exec -C . --sandbox read-only -c &#x27;web_search=&quot;disabled&quot;&#x27; &quot;列出README的本機章節標題，不連網、不修改檔案。&quot;</code></pre><h3>一次只改一項，建立診斷矩陣</h3><p>建立CLI/IDE兩欄，各列版本、CWD、profile、信任、實際登入、工具PATH、目標檔案與網路來源。兩欄有差異時先選最可能影響症狀的一格，做可回復實驗；例如讀本機檔成功但下載失敗，先檢查網路限制而不是重寫AGENTS.md。若某個設定鍵不存在，TOML語法可解析仍不代表Codex認識該鍵，要查configuration reference。每個修正都附前後預期，保存原始片段；環境錯誤已排除後才討論模型輸出品質，能避免把權限故障與提示品質混為一談。</p>"
+    },
+    {
+      "tag": "PRACTICE",
+      "title": "故障分類與可交接的診斷表",
+      "html": "<p>把症狀分為解析、層級、信任、policy、身份驗證與環境。解析錯誤看第一個行列位置；值不符看來源優先序；project設定沒載入看信任與CWD；禁止寫入看沙箱與保護目錄；模型或帳號錯誤看登入與可用清單；缺工具看PATH與安裝。每筆保留預期、實際、最小命令、配置片段與已排除原因，遮蔽token與私有路徑。擴展題是在lab增加另一個近層與不允許的sandbox，先寫預期再更動。排錯成功的標準是能解釋根因與最小修正，而不是不斷加權限直到它碰巧能跑。將真正的團隊共識寫入專案，個人偏好保留使用者層。</p><h3>擴展與證據抽查</h3><p>實作提示：拿一個「讀README成功、寫report被拒絕」的症狀，列出兩種可能原因與各自證據，再選最小檢查。把配置的read-only與作業系統目錄權限分開；前者由Codex執行邊界限制，後者即使沒有模型也可能寫不進去。再拿「MCP能列出但工具呼叫失敗」，比較連線、認證、工具權限與服務錯誤，不僅核對TOML。完成一張三筆診斷卡，每筆寫出未做的假設與下一個核對命令，讓接手者不需重試全部設定。</p>"
+    },
+    {
+      "tag": "YOUR TURN",
+      "title": "交辦、變體與驗收",
+      "html": "<textarea class=\"copybox\" id=\"22-task\" readonly>先讀examples/22四層TOML與config_lab.py，預測四筆case來源與是否被demo requirement接受，再跑離線lab。指出它省略哪些官方合併行為。建立一張症狀/來源/證據/修正表，加入invalid TOML及近層覆蓋變體；不要更改~/.codex，也不要呼叫模型。</textarea><button data-copy-target=\"22-task\">複製任務</button><p>先讓 Codex 讀輸入與契約，列出預期結果，再操作與核對。保存正常與失敗紀錄；模型尚未執行的步驟應寫「未觀察」。把環境、命令、輸入、結果與仍待確認的限制一起交付，讓接手者能在另一個乾淨目錄重現。不要只提交一張成功畫面或一句全部通過。</p>"
+    }
+  ],
+  "quiz": {
+    "question": "CLI覆蓋要求更廣權限，但管理requirements不允許，應如何判斷？",
+    "options": [
+      {
+        "text": "要求仍受強制限制，查明拒絕原因",
+        "correct": true,
+        "explain": "設定預設與可用權限是不同層面。"
+      },
+      {
+        "text": "CLI優先最高，所以應刪除管理限制",
+        "correct": false,
+        "explain": "優先序不能越過管理要求。"
+      }
+    ]
+  },
+  "checklist": [
+    "核對四個demo case與來源",
+    "說明模擬器不等於官方loader",
+    "區分信任、rules與sandbox",
+    "交付可重現的診斷紀錄"
+  ],
+  "sources": [
+    {
+      "label": "設定基礎",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-basic",
+      "supports": "層級、信任、權限與管理限制"
+    },
+    {
+      "label": "進階設定",
+      "url": "https://learn.chatgpt.com/docs/config-file/config-advanced",
+      "supports": "profile與override"
+    },
+    {
+      "label": "命令規則",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/rules",
+      "supports": "prefix_rule與規則評估"
+    },
+    {
+      "label": "指令參考",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "supports": "execpolicy preview與flags"
+    },
+    {
+      "label": "CodexHandbook：選題參考",
+      "url": "https://github.com/hopecyb/CodexHandbook/blob/8a4e885fb389d3209b0b4cb0f718a781bf17467b/src/content/docs/guide/cli/configuration.md",
+      "supports": "參考議題與方法；本站正文、命令安排與練習獨立撰寫"
+    }
+  ],
+  "reviewed": "2026-10-10"
+}

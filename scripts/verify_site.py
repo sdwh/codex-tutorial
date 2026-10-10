@@ -16,8 +16,17 @@ class Document(HTMLParser):
             if k in a:self.refs.append(a[k])
 catalog=json.loads((ROOT/'content/curriculum.json').read_text())
 lesson_count=len(catalog['lessons'])
-assert lesson_count==20 and sum(l['minutes'] for l in catalog['lessons'])==2400
+assert lesson_count==25 and sum(l['minutes'] for l in catalog['lessons'])==3000
 docs={p.name:Document(p.read_text()) for p in ROOT.glob('*.html')}
+for lesson in catalog['lessons']:
+    info=lesson['surface']
+    assert all(info.get(key) for key in ['entry','environment','operation','transfer'])
+    document=docs[lesson['slug']+'.html']
+    assert document.ids.count('lesson-surface')==1
+    assert 'surfaces.html' in document.refs
+assert 'surfaces.html' in docs and 'surfaces.html' in docs['index.html'].refs
+assert 'surfaces.html' in (ROOT/'sitemap.xml').read_text()
+
 for name,doc in docs.items():
     assert len(doc.ids)==len(set(doc.ids)),f'{name}: duplicate IDs'
     for ref in doc.refs:
@@ -48,6 +57,17 @@ with sync_playwright() as pw:
                     page.select_option('#theme-select',mode)
                     assert page.locator('html').get_attribute('data-theme')==mode
         print(f'All pages passed at {width}px in both themes',flush=True)
+    page.goto(url+'/surfaces.html')
+    expect(page.locator('#comparison')).to_contain_text('ChatGPT Work')
+    expect(page.locator('#operators')).to_contain_text('codex exec')
+    page.locator('.quiz button[data-correct="true"]').click()
+    expect(page.locator('.quiz .feedback')).not_to_be_empty()
+    page.goto(url+'/21-codex-exec.html')
+    expect(page.locator('#lesson-surface')).to_contain_text('非互動 exec')
+    for width in [1440,390]:
+        page.set_viewport_size({'width':width,'height':1000})
+        page.goto(url+'/surfaces.html')
+        page.screenshot(path=f'/tmp/codex-surfaces-{width}.png',full_page=True)
     page.set_viewport_size({'width':1440,'height':1000});page.goto(url)
     page.select_option('#theme-select','dark');page.reload();expect(page.locator('html')).to_have_attribute('data-theme','dark')
     page.goto(url+'/customization.html');expect(page.locator('#theme-select')).to_have_value('dark')
@@ -56,10 +76,12 @@ with sync_playwright() as pw:
     page.goto(url);page.locator('#course-search').fill('不存在的單元');expect(page.locator('.course-card:visible')).to_have_count(0);expect(page.locator('#search-status')).to_contain_text('0')
     page.keyboard.press('Escape');expect(page.locator('.course-card:visible')).to_have_count(lesson_count)
     page.locator('#course-search').fill('Debug');expect(page.locator('.course-card:visible')).to_have_count(1);page.keyboard.press('Escape')
-    for query in ['Hooks','GPT Image','FFmpeg','Remotion','POP3']:
+    for query in ['Hooks','GPT Image','FFmpeg','Remotion','POP3','codex exec','CLI 設定','長任務、脈絡','可重用 Skill','50小時畢業']:
         page.locator('#course-search').fill(query);expect(page.locator('.course-card:visible')).to_have_count(1);page.keyboard.press('Escape')
     page.select_option('#learning-path','creative');expect(page.locator('.recommended')).to_have_count(3)
-    page.select_option('#learning-path','automation');expect(page.locator('.recommended')).to_have_count(6)
+    page.select_option('#learning-path','automation');expect(page.locator('.recommended')).to_have_count(8)
+    page.select_option('#learning-path','deep');expect(page.locator('.recommended')).to_have_count(5)
+    assert page.locator('#learning-path option').count()==7
     page.select_option('#learning-path','start');expect(page.locator('.recommended')).to_have_count(3)
     page.locator('[data-copy-target="first-prompt"]').click();expect(page.locator('[data-copy-target="first-prompt"]')).to_contain_text('已複製')
     assert page.evaluate('navigator.clipboard.readText()')==page.locator('#first-prompt').input_value()
@@ -74,6 +96,10 @@ with sync_playwright() as pw:
     page.evaluate("localStorage.setItem('codex-done-12','1');localStorage.setItem('codex-time-20','3600')")
     page.goto(url+'/20-data-capstone.html');page.locator('#lesson-done').check();page.reload();expect(page.locator('#lesson-done')).to_be_checked()
     page.goto(url);expect(page.locator('#course-progress')).to_contain_text(f'3 / {lesson_count}');expect(page.locator('#course-hours')).to_contain_text('1 小時')
+    page.goto(url+'/25-workflow-evaluation.html');page.locator('#lesson-done').check()
+    page.goto(url);expect(page.locator('#course-progress')).to_contain_text(f'4 / {lesson_count}')
+    page.evaluate("for(let i=1;i<=25;i++)localStorage.setItem('codex-done-'+String(i).padStart(2,'0'),'1')")
+    page.reload();expect(page.locator('#course-progress')).to_contain_text('25 / 25');expect(page.locator('#resume-learning')).to_have_attribute('href','25-workflow-evaluation.html')
     for item in catalog['lessons'][12:]:
         page.goto(url+'/'+item['slug']+'.html')
         expect(page.locator('.lesson-navigation')).to_be_visible()
@@ -88,6 +114,7 @@ with sync_playwright() as pw:
     blocked=browser.new_context();blocked.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw new Error('Storage unavailable')}})");bp=blocked.new_page();bp.on('pageerror',lambda e:errors.append(str(e)));bp.goto(url);expect(bp.locator('#course-progress')).to_contain_text(f'0 / {lesson_count}');bp.select_option('#theme-select','dark');expect(bp.locator('html')).to_have_attribute('data-theme','dark');blocked.close()
     for mode,width in [('light',1440),('dark',1440),('light',390)]:
         page.set_viewport_size({'width':width,'height':1000});page.goto(url);page.select_option('#theme-select',mode);page.screenshot(path=f'/tmp/codex-{mode}-{width}.png',full_page=True)
+    page.set_viewport_size({'width':390,'height':1000});page.goto(url+'/21-codex-exec.html');page.screenshot(path='/tmp/codex-exec-390.png',full_page=True)
     assert not errors,f'Browser errors: {errors}'
     bad=[(u,s) for u,s in responses if u.startswith(url) and s>=400];assert not bad,f'HTTP failures: {bad}'
     print('Passed: theme persistence/system changes, search, learning paths, clipboard, saved progress, timer, quiz, keyboard tabs, contents, denied storage, zero JS/local HTTP errors',flush=True)

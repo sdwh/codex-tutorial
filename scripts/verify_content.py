@@ -8,7 +8,7 @@ import ast,json,re,sys
 ROOT=Path(__file__).resolve().parents[1]
 catalog=json.loads((ROOT/'content/curriculum.json').read_text())
 lessons=catalog['lessons']
-assert len(lessons)==20 and sum(x['minutes'] for x in lessons)==2400
+assert len(lessons)==25 and sum(x['minutes'] for x in lessons)==3000
 assert all(x['minutes']==120 for x in lessons)
 class Fragment(HTMLParser):
     def __init__(self,text):
@@ -43,9 +43,9 @@ for item in lessons[12:]:
             assert (ROOT/ref).exists(),f'Missing local example {ref}'
     han=len(re.findall(r'[\u4e00-\u9fff]',text))
     assert han>=1200,f'Lesson {item["id"]} insufficient detail: {han} Han characters'
-    print(f'{item["id"]}: {len(d["sections"])} sections, 120min, {han} Han characters, {len(d["sources"])} primary sources')
+    print(f'{item["id"]}: {len(d["sections"])} sections, 120min, {han} Han characters, {len(d["sources"])} sources')
 for path in (ROOT/'examples').rglob('*.py'):
     ast.parse(path.read_text(),filename=str(path))
 for path in (ROOT/'examples').rglob('*.json'):
     json.loads(path.read_text())
-print('Content contract, downloadable examples and Python syntax passed; total 40 hours.')
+print('Content contract, downloadable examples and Python syntax passed; total 50 hours.')

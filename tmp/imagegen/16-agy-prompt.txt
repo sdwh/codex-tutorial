@@ -1,0 +1,10 @@
+請使用內建圖片生成工具，只建立以下這一張課程插圖。不要生成其他圖片，不要使用子代理，不要以SVG或程式碼替代。請儲存至 /Users/webber/GitHub/codex/output/imagegen/16-image-generation.png；若無法直接存至此處，請回報產出圖片的絕對路徑供我複製。不要使用shell命令。若圖片工具不可用，明確回報。
+
+Use case: illustration-story
+Asset type: course resource illustration for a Traditional Chinese coding education website
+Primary request: Visually explain Codex 與 GPT Image 生圖: 從素材規格到模型呼叫、編輯與圖像驗收。
+Subject: A visual brief and palette evolving into three illustration frames with an editing selection.
+Style/medium: Cohesive editorial illustration series; clean flat shapes, subtle paper texture, rounded geometry, restrained detail and consistent dark charcoal outlines.
+Color palette: lime green #c5f36c, warm orange #ff9c6b, charcoal #20231e, warm ivory #f2f1e9.
+Composition/framing: Landscape 3:2, one clear central scene, generous edge padding, readable at course-card size; isolated on a transparent background.
+Constraints: No text, letters, numbers, logos or watermark. Represent panels with abstract marks only. No decorative mascots. Keep all objects within frame. Match the same visual language across the series.

@@ -41,7 +41,7 @@
     {
       "tag": "CONCEPT",
       "title": "先問缺流程、缺工具，還是缺網站能力",
-      "html": "<p>當你想讓 Codex 每次都按同樣方法檢查課程，先寫 Skill；若要查內部資料庫，需要實際提供資料與操作的工具，考慮 MCP；若要把方法與連接器分發給其他人，考慮 Plugin；若要讓代理操作正在觀看的網頁功能，才是 Site tools／WebMCP 的場景。選型從需求開始，不以擴充數量衡量能力。</p><p>本課建立一個不需連線的 course-review skill，再觀察可選 MCP 設定與 WebMCP 發現流程。版本查核日 2026-10-10。不同 host 與帳號可用範圍不同，先列你的環境：CLI、IDE、desktop built-in browser 或 ChatGPT web；不要把本機配置可用推論為所有瀏覽器都可用。課程中的安裝與連線命令由學員審查後自行執行，本次只驗證素材。</p><p>練習素材：<a href=\"examples/15/SKILL.md\" download>SKILL.md</a>。下載後在新練習資料夾執行，勿直接改動正式專案設定。</p>"
+      "html": "<div class=\"callout\"><b>操作入口：</b>先辨識 host：本機 .agents/skills 由 Codex 探索；網頁 ChatGPT 使用支援的 Skill／plugin 入口。CLI 的 $skill-name 與 ChatGPT 的 @ 選取分開操作。MCP、WebMCP 與 plugin 的資料／工具範圍依 host 支援確認，不能只貼一個網址就假設已連接。</div><p>當你想讓 Codex 每次都按同樣方法檢查課程，先寫 Skill；若要查內部資料庫，需要實際提供資料與操作的工具，考慮 MCP；若要把方法與連接器分發給其他人，考慮 Plugin；若要讓代理操作正在觀看的網頁功能，才是 Site tools／WebMCP 的場景。選型從需求開始，不以擴充數量衡量能力。</p><p>本課建立一個不需連線的 course-review skill，再觀察可選 MCP 設定與 WebMCP 發現流程。版本查核日 2026-10-10。不同 host 與帳號可用範圍不同，先列你的環境：CLI、IDE、desktop built-in browser 或 ChatGPT web；不要把本機配置可用推論為所有瀏覽器都可用。課程中的安裝與連線命令由學員審查後自行執行，本次只驗證素材。</p><p>練習素材：<a href=\"examples/15/SKILL.md\" download>SKILL.md</a>。下載後在新練習資料夾執行，勿直接改動正式專案設定。</p><div class=\"callout\">本課提供整合概覽；深入實作請接續 <a href=\"24-skill-engineering.html\">第24課 Skill 設計、測試與維護</a>。</div>"
     },
     {
       "tag": "MAP",

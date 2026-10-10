@@ -1,0 +1,17 @@
+Use case: infographic-diagram
+Asset type: roadmap infographic for the existing Traditional Chinese Codex learning website.
+Primary request: Draw an accurate Codex learning roadmap for 25 lessons over 50 hours, arranged into five sequential stages of 10 hours each.
+Style: restrained editorial infographic, crisp geometric line icons, clear Traditional Chinese typography, generous whitespace; match a field-guide website.
+Color palette: warm ivory #f6f5ef background, forest green #315c48, charcoal #202820, muted sage accents. Solid opaque background.
+Composition: landscape 1536x1024. Large clear heading at top. Five equally weighted numbered stage cards connected by unambiguous directional arrows in reading order: three across the upper row, then stage four and five across the lower row. Avoid tiny text. Keep all text comfortably inside generous margins.
+Text (verbatim, Traditional Chinese; do not add extra text):
+Heading: "Codex 學習 Roadmap"
+Subtitle: "25 單元 · 50 小時"
+Stage 1: "01–05" / "可靠交辦" / "需求・脈絡・除錯・驗收" / "10 小時"
+Stage 2: "06–10" / "協作與設定" / "Git・UI・Cloud・客製化" / "10 小時"
+Stage 3: "11–15" / "擴充與自動化" / "生活應用・Hooks・SDK・MCP" / "10 小時"
+Stage 4: "16–20" / "創作與資料" / "生圖・FFmpeg・Remotion・郵件" / "10 小時"
+Stage 5: "21–25" / "深度工作流" / "codex exec・恢復・Skill・評估" / "10 小時"
+Footer: "交辦 → 執行 → 驗證 → 交接"
+Constraints: exactly five numbered stages; preserve ranges and hours accurately; legible Traditional Chinese and exact technical names; clear progression; original visual elements, no invented logo or mascot, no watermark; no claims of guaranteed mastery.
+Avoid: neon colors, visual clutter, photorealism, gradients, excessive shadows, illegible miniature labels, Simplified Chinese.

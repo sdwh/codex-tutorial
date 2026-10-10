@@ -1,0 +1,41 @@
+{
+  "performance_claim": null,
+  "records": [
+    {
+      "id": "A1",
+      "variant": "A",
+      "status": "not-run",
+      "model": "unknown",
+      "client_version": "unknown",
+      "reasoning": "unknown",
+      "input_path": "input.txt",
+      "input_sha256": null,
+      "seconds": null,
+      "scores": {
+        "trigger": null,
+        "boundary": null,
+        "format": null,
+        "quality": null
+      },
+      "evidence": {}
+    },
+    {
+      "id": "B1",
+      "variant": "B",
+      "status": "not-run",
+      "model": "unknown",
+      "client_version": "unknown",
+      "reasoning": "unknown",
+      "input_path": "input.txt",
+      "input_sha256": null,
+      "seconds": null,
+      "scores": {
+        "trigger": null,
+        "boundary": null,
+        "format": null,
+        "quality": null
+      },
+      "evidence": {}
+    }
+  ]
+}
