@@ -1,0 +1,6 @@
+order_id,occurred_at,amount,currency,source
+A001,2026-10-01T09:00:00+08:00,100.10,TWD,store-a
+A002,2026-10-01T02:00:00Z,200.20,TWD,store-a
+A001,2026-10-01T09:00:00+08:00,100.10,TWD,store-a
+A003,2026-10-01T11:00:00+08:00,broken,TWD,store-a
+A004,2026-10-01T12:00:00,50.00,TWD,store-a

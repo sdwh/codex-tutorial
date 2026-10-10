@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>13 Hooks：事件觸發與自動檢查｜Codex 實戰學院</title><meta name="description" content="建立可測試的 Hook，從事件與 JSON 合約到信任、排錯與適用界線。"><link rel="canonical" href="https://codex-tutorial.sdwh.dev/13-hooks.html"><link rel="alternate" hreflang="zh-Hant" href="https://codex-tutorial.sdwh.dev/13-hooks.html"><meta name="robots" content="index,follow"><meta property="og:type" content="article"><meta property="og:locale" content="zh_TW"><meta property="og:site_name" content="Codex 實戰學院"><meta property="og:title" content="Hooks：事件觸發與自動檢查｜Codex 實戰學院"><meta property="og:description" content="建立可測試的 Hook，從事件與 JSON 合約到信任、排錯與適用界線。"><meta property="og:url" content="https://codex-tutorial.sdwh.dev/13-hooks.html"><meta property="og:image" content="https://codex-tutorial.sdwh.dev/social-preview.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="manifest" href="site.webmanifest"><script src="theme.js"></script><link rel="stylesheet" href="course.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Hooks：事件觸發與自動檢查", "description": "建立可測試的 Hook，從事件與 JSON 合約到信任、排錯與適用界線。", "inLanguage": "zh-Hant", "timeRequired": "PT2H", "dateModified": "2026-10-10", "isAccessibleForFree": true, "url": "https://codex-tutorial.sdwh.dev/13-hooks.html", "isPartOf": {"@type": "Course", "name": "Codex 實戰學院｜40 小時完整實作課程", "url": "https://codex-tutorial.sdwh.dev/", "timeRequired": "PT40H"}}</script></head>
+<body data-lesson="13"><a class="skip-link" href="#main">跳到主要內容</a>
+<header><div class="bar"><a class="brand" href="index.html">CODEX <span>/ FIELD GUIDE</span></a><div class="bar-right">單元 13 / 20</div>
+<nav class="global-nav" aria-label="主要導覽"><a href="index.html#curriculum">40 小時課程</a><a href="customization.html">客製化</a><a href="plus-playbook.html">Plus 效益</a><a href="multi-agent.html">多代理</a><label class="theme-control"><span>主題</span><select id="theme-select" aria-label="選擇顯示主題"><option value="system">跟隨系統</option><option value="light">淺色</option><option value="dark">深色</option></select></label></nav></div></header><main id="main">
+<section class="hero"><div class="tag">UNIT 13 / 40-HOUR COURSE</div><h1>Hooks：事件觸發與自動檢查</h1><p>建立可測試的 Hook，從事件與 JSON 合約到信任、排錯與適用界線。</p><div class="unit-meta"><span class="pill">建議實作 · 120 分鐘</span><span class="pill">查證 · 2026-10-10</span><span class="pill">階段 3 / 4</span></div></section><section class="section"><div class="tag">BEFORE YOU START</div><h2>準備與學習成果</h2><div class="grid"><div class="box"><h3>開始前準備</h3><ul><li>完成客製化與驗收單元；能使用終端機與閱讀 JSON。</li><li>本機練習使用 Python 3；連線 Codex 練習需安裝 CLI 並完成登入。</li></ul></div><div class="box"><h3>完成後你能</h3><ul><li>選對事件與 matcher，建立受信任的配置。</li><li>用離線 fixtures 驗證允許、拒絕與錯誤輸入。</li><li>區分 hook 決定與 sandbox 權限。</li></ul></div></div></section><section class="section"><div class="tag">120 MINUTES</div><h2>兩小時實作安排</h2><div class="timeline"><div><b>15 分</b>閱讀概念與版本界線</div><div><b>20 分</b>建立環境與引導範例</div><div><b>40 分</b>完成主要實作</div><div><b>25 分</b>失敗變體與排錯</div><div><b>20 分</b>驗收、測驗與回顧</div></div><p class="note">時間包含閱讀、操作、修正與驗收；不是純閱讀時間，也不是工具執行時間保證。</p><div class="timerbox"><span>本單元計時</span><strong id="timer-value">00:00:00</strong><button id="timer-start">開始</button><button id="timer-pause">暫停</button><button id="timer-reset">歸零</button></div></section><section class="section"><div class="tag">CONCEPT</div><h2>把重複檢查掛在正確事件上</h2><p>你已經會在任務中要求測試；現在要讓某些提醒在固定時機出現。Hook 是代理生命週期的事件處理器：收到結構化輸入，執行你提供的程式，再回傳該事件支援的結果。它適合記錄執行摘要、補入短脈絡、檢查特定工具參數。先定義「何時、檢查什麼、失敗如何處理」，不要一開始就記錄整段聊天。</p><p>本課以本機 Codex CLI 為操作環境，文件查核日期為 2026-10-10。先執行 codex --version 與 codex --help，記下版本；如果 /hooks 不存在或設定被判定無效，先核對你安裝的版本，而非假設所有 ChatGPT 網頁、Cloud、IDE 都支援相同事件。離線主實作不需帳號、不呼叫模型。<a href="https://learn.chatgpt.com/docs/hooks" target="_blank" rel="noreferrer">官方 Hooks 文件</a></p><p>練習素材：<a href="examples/13/pre_tool.py" download>pre_tool.py</a>、<a href="examples/13/allow.json" download>allow.json</a>、<a href="examples/13/block.json" download>block.json</a>。下載後在新練習資料夾執行，勿直接改動正式專案設定。</p></section>
+<section class="section"><div class="tag">MAP</div><h2>事件選型：前置、後置與停止</h2><p>PreToolUse 在支援的本機工具呼叫前處理參數；PostToolUse 在執行後取得結果，適合檢視變更。SessionStart 可加入專案短摘要；UserPromptSubmit 可以檢查送出的提示；PreCompact／PostCompact 對應壓縮前後；SubagentStart／SubagentStop 對應子代理。Stop 是回合停止，SessionEnd 才是主執行緒結束，兩者用途不同。</p><p>工具事件 matcher 可比對 Bash、apply_patch 或 MCP 工具名稱；不要直接拿終端機命令字串當 matcher。Stop 與 UserPromptSubmit 的 matcher 目前會被忽略。Stop 回傳 decision:block 是要求代理繼續工作，不是拒絕整個回合；必須檢查 stop_hook_active 等欄位，避免反覆延長。先選單一 PreToolUse 實驗，完成後再增加事件。</p></section>
+<section class="section"><div class="tag">CONFIG</div><h2>建立可審查的專案設定</h2><p>建議在練習用 Git 專案放 .codex/hooks.json；同一設定層也可寫 config.toml 的 inline hooks，但只選一種以免重複載入。使用者、專案與插件來源可能同時執行；高優先層不會自動替換其他來源。以下配置只攔截教材標記，請把路徑換成你複製範例的實際絕對路徑，空白路徑保留引號。</p><pre><code>{
+  &quot;hooks&quot;: {
+    &quot;PreToolUse&quot;: [
+      {
+        &quot;matcher&quot;: &quot;^Bash$&quot;,
+        &quot;hooks&quot;: [
+          {
+            &quot;type&quot;: &quot;command&quot;,
+            &quot;command&quot;: &quot;python3 \&quot;/absolute/path/hook-lab/pre_tool.py\&quot;&quot;,
+            &quot;timeout&quot;: 5,
+            &quot;statusMessage&quot;: &quot;Checking teaching marker&quot;
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre><p>啟動 CLI 後開 /hooks，閱讀來源、命令與 timeout，再信任確切定義。專案層必須受信任；新增或變更定義需要重新審查。不要為了讓範例成功就跳過所有信任檢查。命令會在 session cwd 下執行，絕對路徑可讓你從子目錄啟動時仍找到腳本。<a href="https://learn.chatgpt.com/docs/hooks" target="_blank" rel="noreferrer">設定與信任流程</a></p></section>
+<section class="section"><div class="tag">LAB</div><h2>離線實作：先測 JSON 合約，再接事件</h2><p>下載網站提供的 examples/13/pre_tool.py、allow.json 與 block.json，或從專案複製到一個新資料夾。程式只解析 stdin，檢查 tool_input.command 是否含 HOOK_LAB_BLOCK，不會執行這段 command。這是可重現的教學標記，不是惡意命令偵測器。</p><pre><code>python3 pre_tool.py &lt; allow.json
+python3 pre_tool.py &lt; block.json</code></pre><p>allow 的預期 stdout 是 {}；block 是含 hookSpecificOutput、hookEventName:PreToolUse、permissionDecision:deny 的 JSON。兩次正常回傳都可 exit 0；阻擋決定由事件輸出表達。改造 block fixture，使 command 改成 HOOK_LAB_ALLOW，再確認回到 {}。記錄輸入、stdout、stderr 與 exit code 四項證據，避免只看畫面上的一句成功。</p><pre><code>&quot;&quot;&quot;Offline teaching guardrail; never executes tool input.&quot;&quot;&quot;
+import json
+import sys
+
+try:
+    event = json.load(sys.stdin)
+except (ValueError, TypeError):
+    print(&quot;Invalid hook JSON&quot;, file=sys.stderr)
+    sys.exit(1)
+
+if not isinstance(event, dict):
+    print(&quot;Hook input must be a JSON object&quot;, file=sys.stderr)
+    sys.exit(1)
+
+tool_input = event.get(&quot;tool_input&quot;, {})
+command = tool_input.get(&quot;command&quot;, &quot;&quot;) if isinstance(tool_input, dict) else &quot;&quot;
+if not isinstance(command, str):
+    command = &quot;&quot;
+if event.get(&quot;hook_event_name&quot;) == &quot;PreToolUse&quot; and &quot;HOOK_LAB_BLOCK&quot; in command:
+    print(json.dumps({&quot;hookSpecificOutput&quot;: {
+        &quot;hookEventName&quot;: &quot;PreToolUse&quot;,
+        &quot;permissionDecision&quot;: &quot;deny&quot;,
+        &quot;permissionDecisionReason&quot;: &quot;Teaching marker blocked; choose HOOK_LAB_ALLOW.&quot;
+    }}))
+else:
+    print(&quot;{}&quot;)
+</code></pre></section>
+<section class="section"><div class="tag">CONTRACT</div><h2>stdout、stderr 與退出碼不能互換</h2><p>每個 command hook 收到一個 JSON 物件，常見欄位包括 hook_event_name、session_id、cwd，工具事件另有 tool_name、tool_input。stdout 是與 Codex 溝通的通道；本課固定輸出有效 JSON，除錯文字送 stderr。不同事件的純文字、JSON 與退出碼解讀不同，不能用同一個回傳格式套所有事件。</p><p>對本課的 PreToolUse，JSON deny 或 exit 2 加 stderr 原因可阻擋受支援呼叫；純文字 stdout 會被忽略。一般 exit 1、無效 JSON、逾時不等於成功建立阻擋，請用錯誤 fixture 觀察其診斷並核對事件文件。不要用不受支援的 continue:false 取代 deny。腳本讀到未知欄位時應容忍，缺必要型別則回報錯誤；不依賴 transcript 的內部格式。</p></section>
+<section class="section"><div class="tag">GUIDED</div><h2>接回 Codex：用無副作用命令驗證</h2><p>完成離線測試後才啟動已登入的 CLI，在受信任練習專案加入配置與腳本。請 Codex 分別執行 echo HOOK_LAB_ALLOW 與 echo HOOK_LAB_BLOCK；前者應顯示標記，後者應看到 hook 拒絕原因。這一步會使用帳號額度，請在自己的環境選擇執行。若代理改寫命令避開標記，要求保留原樣，以驗證事件而非模型自行決策。</p><textarea class="copybox" id="13-task" readonly>在這個練習專案驗證 PreToolUse hook。先讀 .codex/hooks.json 與 pre_tool.py，只執行 echo HOOK_LAB_ALLOW、echo HOOK_LAB_BLOCK 兩個無副作用命令。保持命令文字原樣，記錄哪一個被 hook 拒絕、事件名稱與原因。不要修改信任、權限或腳本以繞過拒絕。若版本或 hook 未載入，停在診斷並回報具體證據。</textarea><button data-copy-target="13-task">複製任務</button></section>
+<section class="section"><div class="tag">LIMIT</div><h2>Hook 是檢查層，權限仍由環境控制</h2><p>不要把字串比對腳本稱為安全隔離。Hosted tools 例如 WebSearch 不走相同的本機工具 hook 路徑；某些工具可能例外，write_stdin 是已核準命令的後續輸入／輪詢，不會再次跑前置檢查。真正的讀寫、網路與密鑰邊界仍要由 sandbox、審批、帳號權限與作業系統控制。</p><p>多個匹配命令 hooks 可以同時啟動，不要依賴 A 先完成才啟動 B。共用記錄檔需要原子寫入或獨立檔案。後置事件無法撤回已發生的寫入；async hook 適合記錄，不適合阻擋。本課不輸出密鑰或完整提示，不把 fixture 外部文字當代理指示。MCP tool hooks 要已有連線；伺服器不存在與工具錯誤不會自動阻擋操作。</p></section>
+<section class="section"><div class="tag">REVIEW</div><h2>失敗變體與完成標準</h2><p>用文字 not-json 當 stdin，程式應 stderr 報 Invalid hook JSON 並 exit 1；這驗證腳本的輸入錯誤處理，不能推論 Codex 已拒絕工具。把配置路徑改錯，從 /hooks 與執行事件診斷原因；再恢復正確路徑。若 hook 未執行，依序檢查 CLI 版本、專案信任、定義信任、event／matcher、實際 tool_name 與 cwd。</p><p>延伸挑戰是加入 PostToolUse 的短摘要記錄，只存事件名稱與時間，不存命令或提示原文。先寫兩個併發測試輸入，確認資料不互相覆蓋；再設定短 timeout。交付時附版本、配置、兩個正常 fixture 的結果、一個失敗結果與限制說明。能解釋「哪些事件沒有覆蓋」比顯示一個 hook 成功更有價值。</p><p>把這個練習想像成網站的測試前置檢查：有時你希望每次套用修補前都先提醒代理「產生的頁面要由來源資料重建」。提醒本身不應寫入另一份檔案或啟動新的代理任務，否則容易形成迴圈。先畫出事件與副作用：前置只讀參數、後置只寫短記錄、停止只做有限次驗收，每條線都標明何時結束。</p><p>測試紀錄可用四欄表保存：案例名稱、輸入摘要、預期結果、實際結果。至少加入無 tool_input、tool_input 是字串、command 是空字串的變體，確認程式不會把缺資料當成需要執行的命令。若未來改為要求某欄必填，請把對應案例改成明確錯誤，並說明錯誤只是程式診斷，阻擋是否成立仍由事件合約決定。</p><p>協作時把配置與腳本一起放入版本控制，審查差異時同時閱讀二者。命令路徑沒變不代表腳本內容可信；腳本依賴下載更新也可能改變行為。記下啟用的 hooks 清單、目的與維護人，每次升級 CLI 重跑 fixtures，再做一次本機事件測試。練習結束後可在 /hooks 停用這個教學 hook，避免 HOOK_LAB_BLOCK 標記影響其他工作。</p><p>若想把例子改成格式檢查，先挑一個固定本地檔案，使用純讀取的驗證程式，不從 tool_input 組合 shell 命令。驗證完成後只回報短原因與檔案位置；不要在 hook 內自行修正檔案。這樣你可以明確分辨是代理寫入、驗證失敗，還是後续修補造成的結果。</p></section><section class="section"><div class="tag">CHECK YOUR UNDERSTANDING</div><h2>情境判斷</h2><div class="quiz"><strong>PreToolUse 程式出錯並 exit 1，是否等於工具一定已被阻擋？</strong><div class="quiz-options"><button data-correct="true" data-explain="本課的明確阻擋是有效 deny JSON，或該事件支援的 exit 2；一般失敗不是安全隔離。">否；應核對診斷與事件合約，不能把一般錯誤當 deny。</button><button data-correct="false" data-explain="忽略了本單元的重要界線；請回到實作與限制章節。">是；所有非零退出碼都保證阻擋。</button></div><div class="feedback" aria-live="polite"></div></div></section><section class="section"><div class="tag">ACCEPTANCE</div><h2>驗收與完成</h2><div class="checklist"><label><input type="checkbox"> 保存 CLI 版本與 /hooks 審查證據。</label><label><input type="checkbox"> allow、block 與無效 JSON 三種輸入結果符合預期。</label><label><input type="checkbox"> 沒有執行 fixture 的 command，也沒有記錄敏感文字。</label><label><input type="checkbox"> 能說明 hosted tools、後續 stdin 與併發 hook 的限制。</label></div><label class="donebox"><input id="lesson-done" type="checkbox"> 已完成本單元的實作與驗收</label></section><section class="section"><div class="tag">PRIMARY SOURCES</div><h2>官方與第一手來源</h2><p class="note">範例與操作安排由本站整理。查證日期：2026-10-10；版本、帳號與本機環境不同時，請核對原始文件。</p><div class="source-links"><a href="https://learn.chatgpt.com/docs/hooks" target="_blank" rel="noreferrer" title="事件、設定來源、信任、stdin／stdout、工具涵蓋與阻擋行為">Hooks ↗</a></div></section><footer class="footer-nav lesson-navigation" aria-label="單元導覽"><a href="12-codex-in-practice.html">← Codex in Practice：從需求到學習網站</a><a href="index.html#curriculum">40 小時學習路線</a><a href="14-cli-sdk-ci.html">非互動 CLI、SDK 與 CI →</a></footer></main><script src="icons.js"></script><script src="course-data.js"></script><script src="course.js"></script></body></html>

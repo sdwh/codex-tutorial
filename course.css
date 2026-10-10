@@ -29,3 +29,12 @@ body{font-size:16px;line-height:1.95}header{background:var(--header)}main{max-wi
 @media(max-width:1000px){.global-nav{width:100%;justify-content:space-between;gap:12px}.bar-right{margin-left:auto}.landing-hero{gap:28px}.loop-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){main{padding:0 20px}.bar{padding:12px 20px;gap:10px}.brand span{font-size:9px}.bar-right{font-size:10px}.global-nav{gap:10px;flex-wrap:wrap}.global-nav a{font-size:12px}.theme-control span{display:none}select{padding:6px;font-size:12px}.hero{padding:40px 0 28px}.hero h1{padding:0;font-size:36px}.hero p{font-size:16px}.landing-hero{grid-template-columns:1fr}.work-console{margin-bottom:8px}.loop-grid{grid-template-columns:1fr 1fr;gap:12px}.loop-grid .box{padding:18px}.loop-grid .box p{font-size:14px}.section{padding:30px 0}.section h2{font-size:24px}.grid,.grid.three{grid-template-columns:1fr}.section-heading,.guide-banner{flex-direction:column;gap:16px}.copyrow{flex-wrap:wrap}.contents nav{grid-template-columns:1fr}.box,.card,.scenario,.exercise,.quiz,.deliverable{padding:20px}.hero-actions .button-link{flex:1}.footer-nav{flex-wrap:wrap}.section h2[id]{scroll-margin-top:160px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Long technical examples stay inside the reading column. */
+.grid > *, .loop-grid > *, .panel { min-width: 0; }
+pre code { color: inherit; font-size: inherit; }
+.lesson-navigation { align-items: flex-start; }
+.lesson-navigation a { max-width: 36%; }
+.section ul { padding-left: 1.4em; }
+.section li { margin: 6px 0; }
+@media(max-width:700px) { .lesson-navigation a { max-width: 100%; } }

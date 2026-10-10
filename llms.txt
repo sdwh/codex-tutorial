@@ -1,34 +1,33 @@
 # Codex 實戰學院
 
-> 繁體中文、開放閱讀的 Codex 互動式實戰課程。主課程 20 小時，另有生活 AI Agent 與 Codex in Practice 兩個加值章，共 4 小時。本文教材以 OpenAI 官方文件為基礎，提供情境、練習與可複製範本。
+> 繁體中文 40 小時完整實作課程：20 單元 × 120 分鐘。時間含閱讀、操作與驗收；三篇進階指南不重複計入。
 
-## 課程首頁
-- https://codex-tutorial.sdwh.dev/index.html
+## 課程
+- [01 Codex 工作循環與任務設計](https://codex-tutorial.sdwh.dev/01-tasking.html): 理解 agent 工作方式；練習目標、脈絡、限制與驗收。
+- [02 讀懂陌生專案與提供脈絡](https://codex-tutorial.sdwh.dev/02-commands.html): 導覽 repo、追資料流，用檔案與錯誤縮小問題。
+- [03 Debug：從症狀到可靠修復](https://codex-tutorial.sdwh.dev/03-project-context.html): 重現問題、找根因、做最小修補與回歸驗證。
+- [04 Plan 與跨檔功能開發](https://codex-tutorial.sdwh.dev/04-usage-safety.html): 把模糊需求拆成階段，逐步開發與調整方向。
+- [05 測試、Diff 與 Code Review](https://codex-tutorial.sdwh.dev/05-practical-workflows.html): 設計驗收檢查，用差異與測試證據判斷成果。
+- [06 Git、Worktree 與平行任務](https://codex-tutorial.sdwh.dev/06-git-worktrees.html): 隔離獨立工作，管理分支、檢查點與整合。
+- [07 前端、UI 與視覺迭代](https://codex-tutorial.sdwh.dev/07-frontend-ui.html): 用尺寸、截圖與互動條件驗收介面。
+- [08 Cloud、遠端與長時間任務](https://codex-tutorial.sdwh.dev/08-cloud-long-tasks.html): 準備環境，派送與回收遠端工作。
+- [09 AGENTS.md、RAG、Skills 與 MCP](https://codex-tutorial.sdwh.dev/09-project-customization.html): 建立專案規則、文件索引與可重用工作方式。
+- [10 Quota、權限與第一階段 Capstone](https://codex-tutorial.sdwh.dev/10-usage-safety-capstone.html): 管理用量與執行邊界，交付第一個整合變更。
+- [11 Codex 不只寫程式：生活 AI Agent](https://codex-tutorial.sdwh.dev/11-beyond-coding.html): 旅行研究、資料整理與個人學習教練。
+- [12 Codex in Practice：從需求到學習網站](https://codex-tutorial.sdwh.dev/12-codex-in-practice.html): 以真實案例回顧需求、研究、互動教材與交付。
+- [13 Hooks 與事件觸發](https://codex-tutorial.sdwh.dev/13-hooks.html): 在工作生命週期加入可測試的自動化步驟。
+- [14 非互動 CLI、SDK 與 CI](https://codex-tutorial.sdwh.dev/14-cli-sdk-ci.html): 輸出結構化結果，把查核接進腳本與 CI。
+- [15 Skills、Plugins、MCP 與 WebMCP](https://codex-tutorial.sdwh.dev/15-extensions.html): 選對擴充機制，建立最小工具整合。
+- [16 Codex 與 GPT Image 生圖](https://codex-tutorial.sdwh.dev/16-image-generation.html): 從素材規格到模型呼叫、編輯與圖像驗收。
+- [17 FFmpeg 剪輯、音訊與字幕](https://codex-tutorial.sdwh.dev/17-ffmpeg.html): 檢查素材，建立可重現的剪輯與輸出流程。
+- [18 Remotion 資料驅動動畫](https://codex-tutorial.sdwh.dev/18-remotion.html): 以 React、影格與資料製作可重用動畫。
+- [19 POP3 郵件擷取與自動處理](https://codex-tutorial.sdwh.dev/19-pop3-mail.html): 解析郵件、去重、分類與建立處理佇列。
+- [20 資料報告與自動化整合](https://codex-tutorial.sdwh.dev/20-data-capstone.html): 清理、驗證與彙整資料，交付可重跑流程。
 
-## 主課程：Codex 開發工作流
-- [01 工作循環與任務設計](https://codex-tutorial.sdwh.dev/01-tasking.html)
-- [02 讀懂專案與提供脈絡](https://codex-tutorial.sdwh.dev/02-commands.html)
-- [03 Debug 與可靠修復](https://codex-tutorial.sdwh.dev/03-project-context.html)
-- [04 Plan 與跨檔功能開發](https://codex-tutorial.sdwh.dev/04-usage-safety.html)
-- [05 測試、Diff 與 Code Review](https://codex-tutorial.sdwh.dev/05-practical-workflows.html)
-- [06 Git、Worktree 與平行任務](https://codex-tutorial.sdwh.dev/06-git-worktrees.html)
-- [07 前端、UI 與視覺迭代](https://codex-tutorial.sdwh.dev/07-frontend-ui.html)
-- [08 Cloud、遠端與長時間任務](https://codex-tutorial.sdwh.dev/08-cloud-long-tasks.html)
-- [09 AGENTS.md、RAG、Skills、MCP 與專案脈絡](https://codex-tutorial.sdwh.dev/09-project-customization.html)
-- [10 Quota、權限與整合 Capstone](https://codex-tutorial.sdwh.dev/10-usage-safety-capstone.html)
+## 進階指南
+- [客製化](https://codex-tutorial.sdwh.dev/customization.html)
+- [Plus 效益](https://codex-tutorial.sdwh.dev/plus-playbook.html)
+- [多代理](https://codex-tutorial.sdwh.dev/multi-agent.html)
 
-## 加值章：Codex 與生活 AI Agent
-- [11 Codex 不只寫程式：生活應用案例](https://codex-tutorial.sdwh.dev/11-beyond-coding.html)
-
-- [12 Codex in Practice：從需求到互動課程網站](https://codex-tutorial.sdwh.dev/12-codex-in-practice.html)
-
-## 主要主題
-Codex prompting、repo exploration、debugging、plan mode、verification、code review、git worktrees、frontend design、cloud tasks、AGENTS.md、RAG、reference routing、global and project instructions、skills、MCP、quota、permissions、non-coding AI agent workflows.
-
-## Crawling
-All public HTML lessons are intended for indexing. See /robots.txt and /sitemap.xml.
-
-## 進階指南（2026-10-10 官方文件查證）
-- [客製化](https://codex-tutorial.sdwh.dev/customization.html): config.toml、AGENTS.md、Skills、MCP 與設定優先序。
-- [Plus 效益](https://codex-tutorial.sdwh.dev/plus-playbook.html): 浮動用量、模型選擇、範圍與驗收。
-- [多代理](https://codex-tutorial.sdwh.dev/multi-agent.html): 明確委派、agents.enabled、並行邊界與整合驗證。
+## 維護
+官方文件查證：2026-10-10。網站索引見 /sitemap.xml。

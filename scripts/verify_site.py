@@ -14,6 +14,9 @@ class Document(HTMLParser):
         if 'id' in a:self.ids.append(a['id'])
         for k in ('href','src'):
             if k in a:self.refs.append(a[k])
+catalog=json.loads((ROOT/'content/curriculum.json').read_text())
+lesson_count=len(catalog['lessons'])
+assert lesson_count==20 and sum(l['minutes'] for l in catalog['lessons'])==2400
 docs={p.name:Document(p.read_text()) for p in ROOT.glob('*.html')}
 for name,doc in docs.items():
     assert len(doc.ids)==len(set(doc.ids)),f'{name}: duplicate IDs'
@@ -51,8 +54,12 @@ with sync_playwright() as pw:
     page.select_option('#theme-select','system');page.emulate_media(color_scheme='light');expect(page.locator('html')).to_have_attribute('data-theme','light')
     page.emulate_media(color_scheme='dark');expect(page.locator('html')).to_have_attribute('data-theme','dark')
     page.goto(url);page.locator('#course-search').fill('不存在的單元');expect(page.locator('.course-card:visible')).to_have_count(0);expect(page.locator('#search-status')).to_contain_text('0')
-    page.keyboard.press('Escape');expect(page.locator('.course-card:visible')).to_have_count(12)
+    page.keyboard.press('Escape');expect(page.locator('.course-card:visible')).to_have_count(lesson_count)
     page.locator('#course-search').fill('Debug');expect(page.locator('.course-card:visible')).to_have_count(1);page.keyboard.press('Escape')
+    for query in ['Hooks','GPT Image','FFmpeg','Remotion','POP3']:
+        page.locator('#course-search').fill(query);expect(page.locator('.course-card:visible')).to_have_count(1);page.keyboard.press('Escape')
+    page.select_option('#learning-path','creative');expect(page.locator('.recommended')).to_have_count(3)
+    page.select_option('#learning-path','automation');expect(page.locator('.recommended')).to_have_count(6)
     page.select_option('#learning-path','start');expect(page.locator('.recommended')).to_have_count(3)
     page.locator('[data-copy-target="first-prompt"]').click();expect(page.locator('[data-copy-target="first-prompt"]')).to_contain_text('已複製')
     assert page.evaluate('navigator.clipboard.readText()')==page.locator('#first-prompt').input_value()
@@ -62,11 +69,23 @@ with sync_playwright() as pw:
     page.reload();assert page.locator('#timer-value').inner_text()==value
     page.locator('#timer-reset').click();expect(page.locator('#timer-value')).to_have_text('00:00:00')
     page.locator('.quiz button[data-correct="true"]').first.click();expect(page.locator('.quiz .feedback').first).not_to_be_empty()
-    page.goto(url);expect(page.locator('#course-progress')).to_contain_text('1 / 12');expect(page.locator('#resume-learning')).to_have_attribute('href','02-commands.html')
+    page.goto(url);expect(page.locator('#course-progress')).to_contain_text(f'1 / {lesson_count}');expect(page.locator('#resume-learning')).to_have_attribute('href','02-commands.html')
+    # Existing progress/time keys survive the expanded course, and new units count.
+    page.evaluate("localStorage.setItem('codex-done-12','1');localStorage.setItem('codex-time-20','3600')")
+    page.goto(url+'/20-data-capstone.html');page.locator('#lesson-done').check();page.reload();expect(page.locator('#lesson-done')).to_be_checked()
+    page.goto(url);expect(page.locator('#course-progress')).to_contain_text(f'3 / {lesson_count}');expect(page.locator('#course-hours')).to_contain_text('1 小時')
+    for item in catalog['lessons'][12:]:
+        page.goto(url+'/'+item['slug']+'.html')
+        expect(page.locator('.lesson-navigation')).to_be_visible()
+        ids=page.locator('[id]').evaluate_all('(els)=>els.map(el=>el.id)');assert len(ids)==len(set(ids)),f"Duplicate runtime IDs: {item['slug']}"
+        for button in page.locator('[data-copy-target]').all():
+            target=button.get_attribute('data-copy-target');value=page.locator('[id="'+target+'"]').input_value() if page.locator('[id="'+target+'"]').evaluate('(el)=>el.tagName')=='TEXTAREA' else page.locator('[id="'+target+'"]').inner_text()
+            button.click();assert page.evaluate('navigator.clipboard.readText()')==value
+        page.locator('.quiz button[data-correct="true"]').first.click();expect(page.locator('.quiz .feedback').first).not_to_be_empty()
     page.goto(url+'/09-project-customization.html');group=page.locator('.tabs').first;tabs=group.locator('.tab');tabs.nth(1).click();expect(tabs.nth(1)).to_have_attribute('aria-selected','true');page.keyboard.press('ArrowRight');expect(tabs.nth(2)).to_have_attribute('aria-selected','true')
     page.locator('.contents summary').click();expect(page.locator('.contents nav a').first).to_be_visible();page.locator('.contents nav a').first.click();assert '#section-1' in page.url
     # Theme and progress still work with localStorage denied.
-    blocked=browser.new_context();blocked.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw new Error('Storage unavailable')}})");bp=blocked.new_page();bp.on('pageerror',lambda e:errors.append(str(e)));bp.goto(url);expect(bp.locator('#course-progress')).to_contain_text('0 / 12');bp.select_option('#theme-select','dark');expect(bp.locator('html')).to_have_attribute('data-theme','dark');blocked.close()
+    blocked=browser.new_context();blocked.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw new Error('Storage unavailable')}})");bp=blocked.new_page();bp.on('pageerror',lambda e:errors.append(str(e)));bp.goto(url);expect(bp.locator('#course-progress')).to_contain_text(f'0 / {lesson_count}');bp.select_option('#theme-select','dark');expect(bp.locator('html')).to_have_attribute('data-theme','dark');blocked.close()
     for mode,width in [('light',1440),('dark',1440),('light',390)]:
         page.set_viewport_size({'width':width,'height':1000});page.goto(url);page.select_option('#theme-select',mode);page.screenshot(path=f'/tmp/codex-{mode}-{width}.png',full_page=True)
     assert not errors,f'Browser errors: {errors}'

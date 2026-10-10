@@ -1,0 +1,146 @@
+{
+  "id": "18",
+  "slug": "18-remotion",
+  "title": "用 Codex 與 Remotion 製作動畫",
+  "description": "以 React 與影格建立可重現的五秒動畫，從 Studio 預覽到渲染、素材整合與授權查核。",
+  "track": "applications",
+  "minutes": 120,
+  "prerequisites": [
+    "完成基礎 Codex 任務交辦與本機工具單元",
+    "能在練習資料夾執行命令，理解輸入檔與輸出檔"
+  ],
+  "outcomes": [
+    "完成可註冊的五秒 React 動畫專案",
+    "使用影格控制動畫並能解釋時間換算",
+    "整合本機圖片且保留素材來源",
+    "交付關鍵影格、mp4 與可重跑依賴紀錄"
+  ],
+  "schedule": [
+    {
+      "minutes": 15,
+      "activity": "理解工作流與環境"
+    },
+    {
+      "minutes": 20,
+      "activity": "引導案例與參數"
+    },
+    {
+      "minutes": 45,
+      "activity": "主要實作"
+    },
+    {
+      "minutes": 25,
+      "activity": "變體、反例與排錯"
+    },
+    {
+      "minutes": 15,
+      "activity": "產物驗收與紀錄"
+    }
+  ],
+  "sections": [
+    {
+      "tag": "CONCEPT",
+      "title": "把影片變成時間可計算的程式",
+      "html": "<p>Remotion 適合用資料、文字、圖片與圖形組成動畫，例如產品介紹、課程片頭或每週數據短片。Codex 可以建立 React 元件、整理素材與渲染腳本；動畫的每一幀由程式計算。本單元做五秒片頭，交付 mp4、來源與檢查紀錄。</p><p>你已經在上一課用 FFmpeg 處理既有素材；這課先設計新畫面，再生成影片。若主要需求只是剪掉頭尾，上一課就能完成；大量重複的卡片、圖表與品牌片頭則適合用元件管理。先用 storyboard.md 列出零秒、半秒、一秒、四秒、五秒的狀態，避免一開始就追逐複雜效果。</p><p>影片長度是 150 幀、30fps，也就是五秒。有效影格索引是 0–149；最後一幀不是第 150 幀。閱讀 <a href=\"https://www.remotion.dev/docs/the-fundamentals\" target=\"_blank\" rel=\"noreferrer\">Remotion fundamentals</a>，把「時間＝影格÷fps」寫進設計筆記。接著決定文字、背景、進場動作與結尾停留。</p>"
+    },
+    {
+      "tag": "SETUP",
+      "title": "建立專案、鎖定版本並確認授權",
+      "html": "<p>在獨立資料夾建立專案；使用目前受支援的 Node LTS，先查官方系統需求。2026-10-10 文件列出 macOS 15 以上，Linux 也有系統函式庫與套件要求，不要看到 npm 安裝成功就認定瀏覽器渲染一定可用。</p><pre><code>node --version\nnpm init video@latest\n# 在互動精靈選 Blank 模板，專案名稱 codex-intro\ncd codex-intro\nnpm install\nnpm run dev</code></pre><p>以 <a href=\"https://www.remotion.dev/docs/\" target=\"_blank\" rel=\"noreferrer\">Creating a new project</a> 為版本入口。精靈模板可能更新；本例從標準 Remotion 專案起步，將下面兩個檔案放入 src，渲染時明確傳入 src/index.ts。所有 @remotion/* 套件與 remotion 要保持相同版本，提交 lockfile，記錄 npm ls remotion @remotion/cli。</p><p>Remotion 有自己的授權。查核時官方 <a href=\"https://www.remotion.dev/docs/license/pricing\" target=\"_blank\" rel=\"noreferrer\">License & Pricing</a> 列出個人及三人以下公司免費資格，四人以上合作與公司需相應授權；實際資格與條款以官方最新內容為準。不要把套件可下載等同於所有商業情境無限制免費。本課不購買授權、不使用雲端渲染、不發布影片。</p>"
+    },
+    {
+      "tag": "CODE",
+      "title": "完整五秒片頭：註冊與 Composition",
+      "html": "<p>下載 <a href=\"examples/18/index.ts\" target=\"_blank\" rel=\"noreferrer\">index.ts</a> 與 <a href=\"examples/18/Root.tsx\" target=\"_blank\" rel=\"noreferrer\">Root.tsx</a>，放入 src；檔名大小寫要一致。入口註冊 Root；Composition 定義可渲染的影片，id 是 CLI 選擇目標，不是檔名。尺寸、fps 與 durationInFrames 一起決定時間與畫布。詳見 <a href=\"https://www.remotion.dev/docs/composition\" target=\"_blank\" rel=\"noreferrer\">Composition reference</a>。</p><h3>src/index.ts</h3><pre><code>import {registerRoot} from &#x27;remotion&#x27;;\nimport {Root} from &#x27;./Root&#x27;;\nregisterRoot(Root);</code></pre><h3>src/Root.tsx</h3><pre><code>import React from &#x27;react&#x27;;\nimport {AbsoluteFill, Composition, interpolate, spring, useCurrentFrame, useVideoConfig} from &#x27;remotion&#x27;;\nconst Intro: React.FC = () =&gt; {\n  const frame = useCurrentFrame();\n  const {fps} = useVideoConfig();\n  const opacity = interpolate(frame, [0, 20], [0, 1], {extrapolateLeft: &#x27;clamp&#x27;, extrapolateRight: &#x27;clamp&#x27;});\n  const progress = spring({frame, fps, config: {damping: 18}});\n  const scale = 0.85 + progress * 0.15;\n  return &lt;AbsoluteFill style={{backgroundColor: &#x27;#102d30&#x27;, justifyContent: &#x27;center&#x27;, alignItems: &#x27;center&#x27;, color: &#x27;#edf9f6&#x27;, fontFamily: &#x27;sans-serif&#x27;}}&gt;\n    &lt;div style={{opacity, transform: `scale(${scale})`, textAlign: &#x27;center&#x27;}}&gt;\n      &lt;div style={{fontSize: 96, fontWeight: 700}}&gt;Codex&lt;/div&gt;\n      &lt;div style={{fontSize: 40, marginTop: 24}}&gt;Plan → Execute → Verify&lt;/div&gt;\n    &lt;/div&gt;\n    &lt;div style={{position: &#x27;absolute&#x27;, bottom: 80, height: 8, backgroundColor: &#x27;#64dfca&#x27;, width: `${(frame / 149) * 80}%`}} /&gt;\n  &lt;/AbsoluteFill&gt;;\n};\nexport const Root: React.FC = () =&gt; &lt;Composition id=&quot;CodexIntro&quot; component={Intro} durationInFrames={150} fps={30} width={1280} height={720} /&gt;;</code></pre><p>這個案例不使用網路素材、不依賴 API，也不需要 image model。背景、文字與底部進度線都是程式畫面，可用來驗證動畫管線。先保持最小案例成功，再加角色圖片，才能分辨是程式還是素材載入問題。</p>"
+    },
+    {
+      "tag": "ANIMATION",
+      "title": "useCurrentFrame、interpolate 與 spring 的責任",
+      "html": "<p><a href=\"https://www.remotion.dev/docs/use-current-frame\" target=\"_blank\" rel=\"noreferrer\">useCurrentFrame</a> 回傳當前影格；元件把影格映射為 opacity、scale 與進度線寬度。opacity 在 0–20 幀從 0 到 1，並用 clamp 保持在範圍內，避免後續值一直增加。<a href=\"https://www.remotion.dev/docs/interpolate\" target=\"_blank\" rel=\"noreferrer\">interpolate</a> 適合明確起點與終點的數值變化。</p><p><a href=\"https://www.remotion.dev/docs/spring\" target=\"_blank\" rel=\"noreferrer\">spring</a> 提供彈簧運動，範例的 damping 控制回彈程度；fps 來自 Composition，不能偷偷寫成另一個數值。進度線以 frame/149 計算，使最後一幀達到設定的 80% 寬度。這是為本片頭設計的視覺條件，而不是一般 loading 指標。</p><p>反例是用 setTimeout、Date.now 或 CSS transition 控制關鍵動作。渲染不同影格與播放的時間節奏可能不同；把動作由 frame 決定才容易重現。若要隨機裝飾，使用可固定種子的資料，讓同一輸入可得到同一畫面。</p><p>練習把進場從 20 幀改為 30 幀，先算成一秒，再看是否拖慢閱讀。只調速度不改內容，保存 frame 0、15、30、149 的截圖作比較。文字進場完成後至少保留一段安定時間，讓觀眾能讀完副標。</p>"
+    },
+    {
+      "tag": "ASSETS",
+      "title": "把 GPT Image 素材接進動畫",
+      "html": "<p>第 16 課的透明 robot.png 可以複製到 public/robot.png；保留素材來源與生成請求，不要在 render 期間重新生圖。加入 import 與圖片元件，使用 staticFile 管理 public 資產，圖片寬度以畫布像素計算。先使用已有本機圖片，也能完成整個練习。</p><pre><code>import {Img, staticFile} from &#x27;remotion&#x27;;\n// 在 Intro 的 AbsoluteFill 內插入，先用固定位置驗收\n&lt;Img src={staticFile(&#x27;robot.png&#x27;)} style={{position: &#x27;absolute&#x27;, right: 60, bottom: 100, width: 220}} /&gt;</code></pre><p>正式專案用 <a href=\"https://www.remotion.dev/docs/img\" target=\"_blank\" rel=\"noreferrer\">Img reference</a> 了解圖片載入與渲染等待行為。相較遠端 URL，把素材放在專案內能減少連線、內容變動與失效的影響。不要直接用本機絕對檔案路徑當瀏覽器圖片網址。</p><p>角色不能遮住副標與進度線。先確認透明邊緣在深背景可接受，再決定是否追加浮動動作；文字继續由 React 排版。圖片、字型與資料都列在 assets-manifest.md，記錄來源、用途、權利及版本。遇到生成素材不合格，回到第 16 課修改並保存新版本，不把後製特效當作修正身份不一致的捷徑。</p>"
+    },
+    {
+      "tag": "RENDER",
+      "title": "Studio 預覽、單幀驗收與 CLI 渲染",
+      "html": "<p>Studio 可以檢查時間軸與 Composition；真正交付還要跑 render。先輸出單幀確認畫面，再生成五秒 mp4；CLI 參數見 <a href=\"https://www.remotion.dev/docs/cli/render\" target=\"_blank\" rel=\"noreferrer\">npx remotion render</a>。首次渲染可能需要取得瀏覽器及系統依賴，沒有網路或權限時應記錄原因，不聲稱已完成。</p><pre><code>mkdir -p out\nnpx remotion still src/index.ts CodexIntro out/frame-30.png --frame=30\nnpx remotion render src/index.ts CodexIntro out/intro.mp4 --codec=h264\nffprobe -v error -count_frames -select_streams v:0 -show_entries stream=width,height,avg_frame_rate,nb_read_frames:format=duration -of json out/intro.mp4</code></pre><p>預期為 1280×720、30/1、150 幀、五秒，這個最小案例刻意沒有音訊。請確實看 frame 0、15、30、149，確認文字不越界、進度線沒有超出、最後一幀不黑屏。單幀通過不代表全部影格或影片封裝通過。</p><p>排錯時先讀第一個錯誤。Cannot find composition 檢查 id 與入口；import 找不到檢查大小寫和相對路徑；圖片空白檢查 public 檔案與 staticFile；渲染卡住先測不含素材的最小版本。瀏覽器啟動失敗檢查官方平台支援與系統套件，不自行用全權限旗標掩蓋問題。</p>"
+    },
+    {
+      "tag": "LAB",
+      "title": "實作、變體與交付標準",
+      "html": "<ol class=\"steps\"><li>15 分鐘：檢查 Node、平台需求與授權，寫五秒分鏡與安全區域。</li><li>20 分鐘：建立 Blank 專案，替換入口與 Root，確認 Studio 能找到 CodexIntro。</li><li>45 分鐘：完成純文字片頭，輸出四個關鍵影格與 mp4，用 ffprobe 檢查尺寸、幀數與時間。</li><li>25 分鐘：加入一張本機角色圖片並調整閱讀區；製作另一個副標版本，確認不覆寫原產物。</li><li>15 分鐘：整理來源、lockfile、素材清單、版本與人工檢查結果，保留未執行項目。</li></ol><textarea class=\"copybox\" id=\"18-task\" rows=\"7\">請使用獨立 Remotion 專案製作 1280x720、30fps、150幀的 Codex 片頭。以 useCurrentFrame 控制 opacity、spring scale 與進度線；不要用 setTimeout、Date.now 或外部付費服務。先跑純文字版本，再加入 public/robot.png。鎖定依賴，輸出 frame 0/15/30/149 與 mp4，使用 ffprobe 確認150幀與5秒；交付分鏡、素材清單、授權查核與未執行項目。</textarea><button data-copy-target=\"18-task\">複製任務</button><p>加分練习是把副標和背景色變成 props；先做兩個本機版本，不急著開放訪客輸入。使用者提供的文案只當資料，限制長度並處理換行，不能把其中的命令當作 Codex 的任務指示。對自動批次影片，先建立資料驗證、失敗隔離與輸出命名規則，再接第 20 課的整合驗收。</p>"
+    }
+  ],
+  "quiz": {
+    "question": "Studio 預覽正常，為什麼還需要渲染驗收？",
+    "options": [
+      {
+        "text": "渲染還涉及素材載入、瀏覽器與編碼，需核對最終影片",
+        "correct": true,
+        "explain": "預覽只驗證一部分流程，最終產物應另行檢查。"
+      },
+      {
+        "text": "只要 React 沒報錯，影片一定完全正確",
+        "correct": false,
+        "explain": "時間、文字越界、素材與輸出格式仍可能出錯。"
+      }
+    ]
+  },
+  "checklist": [
+    "完成可註冊的五秒 React 動畫專案",
+    "使用影格控制動畫並能解釋時間換算",
+    "整合本機圖片且保留素材來源",
+    "交付關鍵影格、mp4 與可重跑依賴紀錄"
+  ],
+  "sources": [
+    {
+      "label": "Creating a project",
+      "url": "https://www.remotion.dev/docs/",
+      "supports": "模板、平台與 Node 環境"
+    },
+    {
+      "label": "Fundamentals",
+      "url": "https://www.remotion.dev/docs/the-fundamentals",
+      "supports": "影格與時間"
+    },
+    {
+      "label": "Composition",
+      "url": "https://www.remotion.dev/docs/composition",
+      "supports": "渲染目標與規格"
+    },
+    {
+      "label": "useCurrentFrame",
+      "url": "https://www.remotion.dev/docs/use-current-frame",
+      "supports": "當前影格"
+    },
+    {
+      "label": "interpolate",
+      "url": "https://www.remotion.dev/docs/interpolate",
+      "supports": "數值映射"
+    },
+    {
+      "label": "spring",
+      "url": "https://www.remotion.dev/docs/spring",
+      "supports": "彈簧運動"
+    },
+    {
+      "label": "Img",
+      "url": "https://www.remotion.dev/docs/img",
+      "supports": "圖片與素材"
+    },
+    {
+      "label": "Render CLI",
+      "url": "https://www.remotion.dev/docs/cli/render",
+      "supports": "影片輸出命令"
+    },
+    {
+      "label": "License & Pricing",
+      "url": "https://www.remotion.dev/docs/license/pricing",
+      "supports": "免費與商業授權資格"
+    }
+  ],
+  "reviewed": "2026-10-10"
+}

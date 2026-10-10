@@ -1,0 +1,1 @@
+{"hook_event_name":"PreToolUse","tool_name":"Bash","tool_input":{"command":"echo HOOK_LAB_BLOCK"},"cwd":"/tmp/hook-lab","session_id":"fixture"}

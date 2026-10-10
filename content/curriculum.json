@@ -1,0 +1,187 @@
+{
+  "title": "Codex 實戰學院｜40 小時完整實作課程",
+  "minutes": 2400,
+  "reviewed": "2026-10-10",
+  "lessons": [
+    {
+      "id": "01",
+      "slug": "01-tasking",
+      "title": "Codex 工作循環與任務設計",
+      "description": "理解 agent 工作方式；練習目標、脈絡、限制與驗收。",
+      "track": "start",
+      "minutes": 120,
+      "phase": 1
+    },
+    {
+      "id": "02",
+      "slug": "02-commands",
+      "title": "讀懂陌生專案與提供脈絡",
+      "description": "導覽 repo、追資料流，用檔案與錯誤縮小問題。",
+      "track": "start",
+      "minutes": 120,
+      "phase": 1
+    },
+    {
+      "id": "03",
+      "slug": "03-project-context",
+      "title": "Debug：從症狀到可靠修復",
+      "description": "重現問題、找根因、做最小修補與回歸驗證。",
+      "track": "build",
+      "minutes": 120,
+      "phase": 1
+    },
+    {
+      "id": "04",
+      "slug": "04-usage-safety",
+      "title": "Plan 與跨檔功能開發",
+      "description": "把模糊需求拆成階段，逐步開發與調整方向。",
+      "track": "build",
+      "minutes": 120,
+      "phase": 1
+    },
+    {
+      "id": "05",
+      "slug": "05-practical-workflows",
+      "title": "測試、Diff 與 Code Review",
+      "description": "設計驗收檢查，用差異與測試證據判斷成果。",
+      "track": "start",
+      "minutes": 120,
+      "phase": 1
+    },
+    {
+      "id": "06",
+      "slug": "06-git-worktrees",
+      "title": "Git、Worktree 與平行任務",
+      "description": "隔離獨立工作，管理分支、檢查點與整合。",
+      "track": "scale",
+      "minutes": 120,
+      "phase": 2
+    },
+    {
+      "id": "07",
+      "slug": "07-frontend-ui",
+      "title": "前端、UI 與視覺迭代",
+      "description": "用尺寸、截圖與互動條件驗收介面。",
+      "track": "build",
+      "minutes": 120,
+      "phase": 2
+    },
+    {
+      "id": "08",
+      "slug": "08-cloud-long-tasks",
+      "title": "Cloud、遠端與長時間任務",
+      "description": "準備環境，派送與回收遠端工作。",
+      "track": "scale",
+      "minutes": 120,
+      "phase": 2
+    },
+    {
+      "id": "09",
+      "slug": "09-project-customization",
+      "title": "AGENTS.md、RAG、Skills 與 MCP",
+      "description": "建立專案規則、文件索引與可重用工作方式。",
+      "track": "scale",
+      "minutes": 120,
+      "phase": 2
+    },
+    {
+      "id": "10",
+      "slug": "10-usage-safety-capstone",
+      "title": "Quota、權限與第一階段 Capstone",
+      "description": "管理用量與執行邊界，交付第一個整合變更。",
+      "track": "scale",
+      "minutes": 120,
+      "phase": 2
+    },
+    {
+      "id": "11",
+      "slug": "11-beyond-coding",
+      "title": "Codex 不只寫程式：生活 AI Agent",
+      "description": "旅行研究、資料整理與個人學習教練。",
+      "track": "automation",
+      "minutes": 120,
+      "phase": 3
+    },
+    {
+      "id": "12",
+      "slug": "12-codex-in-practice",
+      "title": "Codex in Practice：從需求到學習網站",
+      "description": "以真實案例回顧需求、研究、互動教材與交付。",
+      "track": "build",
+      "minutes": 120,
+      "phase": 3
+    },
+    {
+      "id": "13",
+      "slug": "13-hooks",
+      "title": "Hooks 與事件觸發",
+      "description": "在工作生命週期加入可測試的自動化步驟。",
+      "track": "automation",
+      "minutes": 120,
+      "phase": 3
+    },
+    {
+      "id": "14",
+      "slug": "14-cli-sdk-ci",
+      "title": "非互動 CLI、SDK 與 CI",
+      "description": "輸出結構化結果，把查核接進腳本與 CI。",
+      "track": "automation",
+      "minutes": 120,
+      "phase": 3
+    },
+    {
+      "id": "15",
+      "slug": "15-extensions",
+      "title": "Skills、Plugins、MCP 與 WebMCP",
+      "description": "選對擴充機制，建立最小工具整合。",
+      "track": "automation",
+      "minutes": 120,
+      "phase": 3
+    },
+    {
+      "id": "16",
+      "slug": "16-image-generation",
+      "title": "Codex 與 GPT Image 生圖",
+      "description": "從素材規格到模型呼叫、編輯與圖像驗收。",
+      "track": "creative",
+      "minutes": 120,
+      "phase": 4
+    },
+    {
+      "id": "17",
+      "slug": "17-ffmpeg",
+      "title": "FFmpeg 剪輯、音訊與字幕",
+      "description": "檢查素材，建立可重現的剪輯與輸出流程。",
+      "track": "creative",
+      "minutes": 120,
+      "phase": 4
+    },
+    {
+      "id": "18",
+      "slug": "18-remotion",
+      "title": "Remotion 資料驅動動畫",
+      "description": "以 React、影格與資料製作可重用動畫。",
+      "track": "creative",
+      "minutes": 120,
+      "phase": 4
+    },
+    {
+      "id": "19",
+      "slug": "19-pop3-mail",
+      "title": "POP3 郵件擷取與自動處理",
+      "description": "解析郵件、去重、分類與建立處理佇列。",
+      "track": "automation",
+      "minutes": 120,
+      "phase": 4
+    },
+    {
+      "id": "20",
+      "slug": "20-data-capstone",
+      "title": "資料報告與自動化整合",
+      "description": "清理、驗證與彙整資料，交付可重跑流程。",
+      "track": "automation",
+      "minutes": 120,
+      "phase": 4
+    }
+  ]
+}
