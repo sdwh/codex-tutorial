@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://codex-tutorial.sdwh.dev/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/01-tasking.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/02-commands.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/03-project-context.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/04-usage-safety.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/05-practical-workflows.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/06-git-worktrees.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/07-frontend-ui.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/08-cloud-long-tasks.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/09-project-customization.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/10-usage-safety-capstone.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/11-beyond-coding.html</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://codex-tutorial.sdwh.dev/12-codex-in-practice.html</loc><lastmod>2026-10-09</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/01-tasking.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/02-commands.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/03-project-context.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/04-usage-safety.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/05-practical-workflows.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/06-git-worktrees.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/07-frontend-ui.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/08-cloud-long-tasks.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/09-project-customization.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/10-usage-safety-capstone.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/11-beyond-coding.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/12-codex-in-practice.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/customization.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/plus-playbook.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://codex-tutorial.sdwh.dev/multi-agent.html</loc><lastmod>2026-10-10</lastmod></url>
 </urlset>

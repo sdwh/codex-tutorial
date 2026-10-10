@@ -27,3 +27,8 @@ Codex prompting、repo exploration、debugging、plan mode、verification、code
 
 ## Crawling
 All public HTML lessons are intended for indexing. See /robots.txt and /sitemap.xml.
+
+## 進階指南（2026-10-10 官方文件查證）
+- [客製化](https://codex-tutorial.sdwh.dev/customization.html): config.toml、AGENTS.md、Skills、MCP 與設定優先序。
+- [Plus 效益](https://codex-tutorial.sdwh.dev/plus-playbook.html): 浮動用量、模型選擇、範圍與驗收。
+- [多代理](https://codex-tutorial.sdwh.dev/multi-agent.html): 明確委派、agents.enabled、並行邊界與整合驗證。
